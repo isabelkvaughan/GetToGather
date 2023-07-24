@@ -30,7 +30,9 @@ const Header = () => {
 
   return (
     <header>
-      <img src={logo} alt="GetToGather" />
+      <Link to="/">
+        <img src={logo} alt="GetToGather" />
+      </Link>
       <nav>
         {loggedIn ? (
           <button onClick={handleLogout}>Logout</button>
