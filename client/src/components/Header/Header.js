@@ -6,7 +6,9 @@ const Header = () => {
   return (
     <header>
       <img src={logo} alt="GetToGather" />
-      {/* Add navigation links here */}
+      <nav> 
+        
+      </nav>
     </header>
   );
 };
