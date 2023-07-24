@@ -1,0 +1,20 @@
+:root {
+    --primary: #00CACA;
+    --secondary: #FE8E17;
+    --tertiary: #F6C0CA;
+    --quatrinary: #8EA5B7;
+    --light: #fff;
+    --dark: #0D4A6A;
+  }
+
+  header {
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img {
+    max-width: 200px;
+    padding: 10px;
+  }
