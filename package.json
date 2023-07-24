@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "name": "gettogather",
+  "description": "Event Planner App",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isabelkvaughan/GetToGather.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isabelkvaughan/GetToGather/issues"
+  },
+  "homepage": "https://github.com/isabelkvaughan/GetToGather#readme"
+}
