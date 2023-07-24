@@ -1,0 +1,4 @@
+
+1. Creating Boilerplate 
+rearrange or delete/add files to whatever works for you guys 
+2. Setting up Dependencies
