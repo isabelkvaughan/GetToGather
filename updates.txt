@@ -3,3 +3,16 @@
 rearrange or delete/add files to whatever works for you guys 
 2. Setting up Dependencies
 3. There are three package.json files: one in root folder to install and load server; one each in client and server as well with dependencies.
+4. The following files/folders have to be worked on:
+
+A. Server-side
+a. Models
+b. schemas->resolvers, typeDefs
+c. config
+d. utils->auth
+
+B. Client-side
+a. pages- may contain several depending upon the functionality
+b. components-may contain several depending upon the functionality
+c. utils->mutations,queries,localstorage,auth
+d. App.js
