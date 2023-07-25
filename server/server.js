@@ -7,7 +7,9 @@ const cors = require("cors"); // Import the cors package
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
 const { typeDefs, resolvers } = require("./schemas");
+//const mongoose = require("mongoose");
 const db = require("./config/connection");
+//const { dbUrl } = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,6 +34,24 @@ app.options("*", cors(corsOptions));
 
 // logging the connection to see db url
 console.log("connecting to mongodb...");
+
+// logging the connection to see db url
+console.log("connecting to mongodb...");
+//console.log("DB URL:", dbUrl);
+
+// //mongoose connection
+// mongoose
+//   .connect(dbUrl, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     console.log("Connected to MongoDB database");
+//     server.applyMiddleware({ app });
+//   })
+//   .catch((error) =>
+//     console.error("Error connecting to MongoDB database:", error)
+//   );
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/events_db"
-);
+const dbUrl = "mongodb://localhost:27017/events_db";
+mongoose.connect(process.env.MONGODB_URI || dbUrl);
 
 module.exports = mongoose.connection;
+//module.exports = { dbUrl };
