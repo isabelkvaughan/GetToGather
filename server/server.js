@@ -14,6 +14,21 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+// logging the connection to see db url
+console.log('connecting to mongodb...');
+console.log('DB URL:', dbUrl);
+
+
+//mongoose connection 
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to MongoDB database'))
+  .catch((error) => console.error('Error connecting to MongoDB database:', error));
+
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
