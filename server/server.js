@@ -5,6 +5,12 @@ const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+// mongodb url
+
+const mongoose = require('mongoose');
+//defining dbUrl (although it's in connection.js )
+const dbUrl = 'mongodb://localhost:27017/events_db';
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
