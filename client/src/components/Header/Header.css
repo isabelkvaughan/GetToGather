@@ -1,20 +1,62 @@
 :root {
-    --primary: #00CACA;
-    --secondary: #FE8E17;
-    --tertiary: #F6C0CA;
-    --quatrinary: #8EA5B7;
-    --light: #fff;
-    --dark: #0D4A6A;
+  --primary: #00CACA;
+  --secondary: #FE8E17;
+  --tertiary: #F6C0CA;
+  --quatrinary: #8EA5B7;
+  --light: #fff;
+  --dark: #0D4A6A;
+}
+
+header {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative; /* Create a stacking context */
+}
+
+img {
+  max-width: 200px;
+}
+
+/* Nav Bar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  position: relative; /* Create a stacking context */
+  z-index: 1; /* Ensure the navigation bar stays above other elements */
+}
+
+.nav-btn {
+  color: var(--dark);
+  text-decoration: none;
+  padding: 0 20px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: var(--secondary);
+}
+
+/* Media Query for Desktop Screens */
+@media only screen and (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
   }
 
-  header {
-    background-color: var(--primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   img {
-    max-width: 200px;
-    padding: 10px;
+    max-width: 150px;
   }
+
+  .navbar {
+    margin: 0;
+  }
+}
