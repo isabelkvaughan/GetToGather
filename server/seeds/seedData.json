@@ -1,16 +1,14 @@
-
 [
-    {
-        "name": "Example Event 1",
-        "date": "2023-07-25T00:00:00.000Z",
-        "location":"Melbourne",
-        "description": "Party in Melbourne CBD!"
-
-    },
-    {
-        "name": "Example Event 2",
-        "date":"2023-07-25T00:00:00.000Z",
-        "location":"Melbourne",
-        "description":  "Party at Monash!"
-    }
+  {
+    "name": "Example Event 1",
+    "date": "2023-07-25T00:00:00.000Z",
+    "location": "Melbourne",
+    "description": "Party in Melbourne CBD!"
+  },
+  {
+    "name": "Example Event 2",
+    "date": "2023-07-25T00:00:00.000Z",
+    "location": "Melbourne",
+    "description": "Party at Monash!"
+  }
 ]

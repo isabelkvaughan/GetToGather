@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "run",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/seed"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,7 @@
     "graphql": "^16.7.1",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "jsonwebtoken": "^9.0.1"
   }
 }

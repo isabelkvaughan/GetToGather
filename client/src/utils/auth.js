@@ -1,58 +1,52 @@
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
 class AuthService {
   getProfile() {
     try {
       return decode(this.getToken());
     } catch (error) {
-      console.error('Error decoding token:', error);
+      console.error("Error decoding token:", error);
       return null;
     }
   }
 
+  // check if user's logged in
   loggedIn() {
+    // Checks if there is a saved token and it's still valid
     const token = this.getToken();
-    // If there is a token and it's not expired, return `true`
-    return token && !this.isTokenExpired(token) ? true : false;
+    return !!token && !this.isTokenExpired(token); // handwaiving here
   }
 
+  // check if token is expired
   isTokenExpired(token) {
     try {
-      // Decode the token to get its expiration time that was set by the server
       const decoded = decode(token);
-      // If the expiration time is less than the current time (in seconds), the token is expired and we return `true`
       if (decoded.exp < Date.now() / 1000) {
-        localStorage.removeItem('id_token');
         return true;
-      }
-      // If token hasn't passed its expiration time, return `false`
+      } else return false;
+    } catch (err) {
       return false;
-    } catch (error) {
-      console.error('Error decoding token:', error);
-      return true; // Assuming expired if decoding fails
     }
   }
 
   getToken() {
-    return localStorage.getItem('id_token');
+    return localStorage.getItem("id_token");
   }
 
   login(idToken) {
     try {
-      localStorage.setItem('id_token', idToken);
-      window.location.assign('/');
+      localStorage.setItem("id_token", idToken);
+      window.location.assign("/");
     } catch (error) {
-      console.error('Error saving token:', error);
+      console.error("Error saving token:", error);
     }
   }
 
   logout() {
-    try {
-      localStorage.removeItem('id_token');
-      window.location.reload();
-    } catch (error) {
-      console.error('Error removing token:', error);
-    }
+    // Clear user token and profile data from localStorage
+    localStorage.removeItem("id_token");
+    // this will reload the page and reset the state of the application
+    window.location.assign("/");
   }
 }
 
