@@ -20,12 +20,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 5,
   },
-  thoughts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-    },
-  ],
 });
 
 // set up pre-save middleware to create password
