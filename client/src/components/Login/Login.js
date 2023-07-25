@@ -32,24 +32,24 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <div>{error.message}</div>}
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>Email:</label>
-          <input type="email" name="email" onChange={handleChange} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" name="password" onChange={handleChange} />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account? <Link to="/signup">Sign up instead</Link>
-      </p>
+    <div className="auth-form">
+  <h2>Login</h2>
+  {error && <div>{error.message}</div>}
+  <form onSubmit={handleFormSubmit}>
+    <div className="form-div">
+      <label>Email</label>
+      <input type="email" name="email" onChange={handleChange} />
     </div>
+    <div className="form-div">
+      <label>Password</label>
+      <input type="password" name="password" onChange={handleChange} />
+    </div>
+    <button type="submit">Login</button>
+  </form>
+  <p>
+    Don't have an account? <Link to="/signup">Sign up instead</Link>
+  </p>
+</div>
   );
 };
 
