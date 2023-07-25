@@ -8,20 +8,20 @@ import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const Signup = () => {
-  // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  // set state for form validation
   const [validated, setValidated] = useState(false);
-  // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-  // states to track user interaction
   const [usernameTouched, setUsernameTouched] = useState(false);
   const [emailTouched, setEmailTouched] = useState(false);
   const [passwordTouched, setPasswordTouched] = useState(false);
+
+  const [usernameValid, setUsernameValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
 
   const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -40,14 +40,17 @@ const Signup = () => {
 
   const handleUsernameBlur = () => {
     setUsernameTouched(true);
+    setUsernameValid(userFormData.username !== "");
   };
 
   const handleEmailBlur = () => {
     setEmailTouched(true);
+    setEmailValid(userFormData.email !== "");
   };
 
   const handlePasswordBlur = () => {
     setPasswordTouched(true);
+    setPasswordValid(userFormData.password !== "");
   };
 
   const handleFormSubmit = async (event) => {
@@ -84,6 +87,9 @@ const Signup = () => {
     setUsernameTouched(false);
     setEmailTouched(false);
     setPasswordTouched(false);
+    setUsernameValid(true);
+    setEmailValid(true);
+    setPasswordValid(true);
     setValidated(false);
   };
 
@@ -113,7 +119,7 @@ const Signup = () => {
               value={userFormData.username}
               required
             />
-            {usernameTouched && (
+            {usernameTouched && !usernameValid && (
               <Form.Control.Feedback type="invalid" className="form-feedback">
                 Username is required!
               </Form.Control.Feedback>
@@ -130,7 +136,7 @@ const Signup = () => {
               value={userFormData.email}
               required
             />
-            {emailTouched && (
+            {emailTouched && !emailValid && (
               <Form.Control.Feedback type="invalid" className="form-feedback">
                 Email is required!
               </Form.Control.Feedback>
@@ -147,7 +153,7 @@ const Signup = () => {
               value={userFormData.password}
               required
             />
-            {passwordTouched && (
+            {passwordTouched && !passwordValid && (
               <Form.Control.Feedback type="invalid" className="form-feedback">
                 Valid password required!
               </Form.Control.Feedback>

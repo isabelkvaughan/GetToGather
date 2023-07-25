@@ -12,6 +12,8 @@ const Login = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [emailTouched, setEmailTouched] = useState(false);
   const [passwordTouched, setPasswordTouched] = useState(false);
+  const [emailValid, setEmailValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
 
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -30,10 +32,12 @@ const Login = () => {
 
   const handleEmailBlur = () => {
     setEmailTouched(true);
+    setEmailValid(userFormData.email !== "");
   };
 
   const handlePasswordBlur = () => {
     setPasswordTouched(true);
+    setPasswordValid(userFormData.password !== "");
   };
 
   const handleFormSubmit = async (event) => {
@@ -45,6 +49,8 @@ const Login = () => {
       event.stopPropagation();
       setEmailTouched(true);
       setPasswordTouched(true);
+      setEmailValid(userFormData.email !== "");
+      setPasswordValid(userFormData.password !== "");
       return;
     }
 
@@ -66,6 +72,8 @@ const Login = () => {
     });
     setEmailTouched(false);
     setPasswordTouched(false);
+    setEmailValid(false);
+    setPasswordValid(false);
   };
 
   return (
@@ -92,10 +100,10 @@ const Login = () => {
               value={userFormData.email}
               required
             />
-            {emailTouched && (
+            {emailTouched && !emailValid && (
               <Form.Control.Feedback type="invalid" className="form-feedback">
-              Email is required!
-            </Form.Control.Feedback>
+                Email is required!
+              </Form.Control.Feedback>
             )}
           </Form.Group>
 
@@ -109,10 +117,10 @@ const Login = () => {
               value={userFormData.password}
               required
             />
-            {passwordTouched && (
+            {passwordTouched && !passwordValid && (
               <Form.Control.Feedback type="invalid" className="form-feedback">
-              Valid password required!
-            </Form.Control.Feedback>
+                Valid password required!
+              </Form.Control.Feedback>
             )}
           </Form.Group>
           <Button
