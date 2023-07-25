@@ -6,7 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
-const SignupForm = () => {
+const Signup = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -14,9 +14,13 @@ const SignupForm = () => {
     password: "",
   });
   // set state for form validation
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+  // states to track user interaction
+  const [usernameTouched, setUsernameTouched] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
 
   const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -33,14 +37,31 @@ const SignupForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
+  const handleUsernameBlur = () => {
+    setUsernameTouched(true);
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+  };
+
+  const handlePasswordBlur = () => {
+    setPasswordTouched(true);
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      // Mark all fields as touched to show feedback
+      setUsernameTouched(true);
+      setEmailTouched(true);
+      setPasswordTouched(true);
+      setValidated(true);
+      return;
     }
 
     try {
@@ -53,17 +74,22 @@ const SignupForm = () => {
       console.error(err);
     }
 
+    // Clear form values and reset states
     setUserFormData({
       username: "",
       email: "",
       password: "",
     });
+    setUsernameTouched(false);
+    setEmailTouched(false);
+    setPasswordTouched(false);
+    setValidated(false);
   };
 
   return (
     <>
       <form className="auth-form">
-        <h2>SignUp</h2>
+        <h2>Sign Up</h2>
         {/* This is needed for the validation functionality above */}
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           {/* show alert if server response is bad */}
@@ -80,45 +106,51 @@ const SignupForm = () => {
             <Form.Label htmlFor="username">Username</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Your username"
               name="username"
               onChange={handleInputChange}
+              onBlur={handleUsernameBlur}
               value={userFormData.username}
               required
             />
-            <Form.Control.Feedback type="invalid">
-              Username is required!
-            </Form.Control.Feedback>
+            {usernameTouched && (
+              <Form.Control.Feedback type="invalid" className="form-feedback">
+                Username is required!
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3 form-div">
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Your email address"
               name="email"
               onChange={handleInputChange}
+              onBlur={handleEmailBlur}
               value={userFormData.email}
               required
             />
-            <Form.Control.Feedback type="invalid">
-              Email is required!
-            </Form.Control.Feedback>
+            {emailTouched && (
+              <Form.Control.Feedback type="invalid" className="form-feedback">
+                Email is required!
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3 form-div">
             <Form.Label htmlFor="password">Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Your password"
               name="password"
               onChange={handleInputChange}
+              onBlur={handlePasswordBlur}
               value={userFormData.password}
               required
             />
-            <Form.Control.Feedback type="invalid">
-              Password is required!
-            </Form.Control.Feedback>
+            {passwordTouched && (
+              <Form.Control.Feedback type="invalid" className="form-feedback">
+                Valid password required!
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
           <Button
             disabled={
@@ -139,4 +171,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default Signup;

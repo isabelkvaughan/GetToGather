@@ -51,6 +51,10 @@
   border-radius: 15px;
 }
 
+.form-feedback {
+  color: var(--secondary);
+}
+
 .auth-form button {
   background-color: var(--secondary);
   color: var(--light);
