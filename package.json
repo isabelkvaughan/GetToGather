@@ -1,22 +1,22 @@
 {
-  "dependencies": {
-    "concurrently": "^8.2.0"
-  },
   "name": "gettogather",
-  "description": "Event Planner App",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "server/server.js",
   "scripts": {
-    "test": "run"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/isabelkvaughan/GetToGather.git"
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/isabelkvaughan/GetToGather/issues"
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   },
-  "homepage": "https://github.com/isabelkvaughan/GetToGather#readme"
+  "dependencies": {
+    "@apollo/client": "^3.7.17",
+    "react-router-dom": "^6.14.2"
+  }
 }

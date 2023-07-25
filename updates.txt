@@ -2,3 +2,4 @@
 1. Creating Boilerplate 
 rearrange or delete/add files to whatever works for you guys 
 2. Setting up Dependencies
+3. There are three package.json files: one in root folder to install and load server; one each in client and server as well with dependencies.
