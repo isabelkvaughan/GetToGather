@@ -120,7 +120,7 @@ const Login = () => {
             type="submit"
             variant="success"
           >
-            Submit
+            Log In
           </Button>
         </Form>
         <p>

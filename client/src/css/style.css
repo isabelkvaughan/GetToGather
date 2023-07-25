@@ -45,7 +45,6 @@
 
 .auth-form input {
   padding: 15px;
-  margin-bottom: 10px;
   background-color: var(--quatrinary);
   border: none;
   border-radius: 15px;
@@ -62,7 +61,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .auth-form button:hover {
@@ -77,4 +76,8 @@
 
 .auth-form a {
   color: var(--secondary);
+}
+
+.auth-form a:hover {
+  color: #ff9e44;
 }
