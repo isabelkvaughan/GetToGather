@@ -6,7 +6,6 @@ const { ApolloServer } = require("apollo-server-express");
 const cors = require("cors"); // Import the cors package
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
-
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
@@ -30,6 +29,9 @@ const server = new ApolloServer({
 });
 // First, add the cors middleware to allow preflight requests
 app.options("*", cors(corsOptions));
+
+// logging the connection to see db url
+console.log("connecting to mongodb...");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

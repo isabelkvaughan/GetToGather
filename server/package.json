@@ -6,17 +6,18 @@
   "scripts": {
     "test": "run",
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeds/seed"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^3.12.0",
+    "bcrypt": "^5.1.0",
     "express": "^4.18.2",
     "graphql": "^16.7.1",
     "mongoose": "^7.4.0",
     "nodemon": "^3.0.1",
-    "jsonwebtoken": "^9.0.1",
-    "bcrypt": "^4.0.1"
+    "jsonwebtoken": "^9.0.1"
   }
 }

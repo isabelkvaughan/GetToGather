@@ -1,0 +1,16 @@
+
+[
+    {
+        "name": "Example Event 1",
+        "date": "25-07-2023",
+        "location":"Melbourne",
+        "description": "Party in Melbourne CBD!"
+
+    },
+    {
+        "name": "Example Event 2",
+        "date":"25-07-2023",
+        "location":"Melbourne",
+        "description":  "Party at Monash!"
+    }
+]
