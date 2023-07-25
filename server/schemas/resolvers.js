@@ -1,4 +1,4 @@
-const { Event } = require('../models');
+const { Event, User } = require('../models');
 
 const resolvers = {
   Query: {
@@ -10,7 +10,7 @@ const resolvers = {
         throw new Error('Error fetching events:', error);
       }
     },
-    users: async () => {
+    user: async () => {
       return User.find();
     },
     user: async (parent, { username }) => {
