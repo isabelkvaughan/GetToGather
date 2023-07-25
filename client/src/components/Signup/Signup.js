@@ -32,20 +32,20 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="auth-form">
       <h2>Sign Up</h2>
       {error && <div>{error.message}</div>}
       <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>Username:</label>
+        <div className="form-div">
+          <label>Username</label>
           <input type="text" name="username" onChange={handleChange} />
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="form-div">
+          <label>Email</label>
           <input type="email" name="email" onChange={handleChange} />
         </div>
         <div>
-          <label>Password:</label>
+          <label className="form-div">Password</label>
           <input type="password" name="password" onChange={handleChange} />
         </div>
         <button type="submit">Sign Up</button>
