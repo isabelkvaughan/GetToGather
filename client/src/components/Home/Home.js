@@ -6,8 +6,6 @@ import { QUERY_EVENTS } from '../../utils/queries';
 import "./Home.css";
 
 const Home = () => {
-
-  // Use the useQuery hook to fetch events within the upcoming week from the database
   const { loading, error, data } = useQuery(QUERY_EVENTS);
 
   if (loading) {
