@@ -10,6 +10,10 @@ const eventSchema = new Schema({
     required: true,
     get: (timestamp) => dateFormat(timestamp),
   },
+  location: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,

@@ -4,6 +4,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     date: String!
+    location: String!
     description: String!
     location: String!
   }
