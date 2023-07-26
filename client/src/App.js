@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header/Header";
-import Home from "./pages/Home";
+import Home from "./components/Home/Home";
 import Login from "./components/Login/Login.js";
 import Signup from "./components/Signup/Signup.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
