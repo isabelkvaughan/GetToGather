@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-
-const eventSchema = new mongoose.Schema({
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
+const eventSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -8,13 +8,18 @@ const eventSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
+    get: (timestamp) => dateFormat(timestamp),
   },
   description: {
     type: String,
     required: true,
   },
+  location: {
+    type: String,
+    required: true,
+  },
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = model("Event", eventSchema);
 
 module.exports = Event;

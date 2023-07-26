@@ -5,13 +5,27 @@ const { Event } = require("../models");
 
 const resolvers = {
   Query: {
-    events: async () => {
+    events: async (parent, { username }) => {
       try {
-        const events = await Event.find().sort({ date: 1 });
+        const params = username ? { username } : {};
+        return Event.find(params).sort({ createdAt: -1 });
+      } catch (error) {
+        throw new Error("Error fetching events:", error);
+      }
+    },
+    event: async (parent, { eventId }) => {
+      try {
+        const events = await Event.findOne({ _id: eventId });
         return events;
       } catch (error) {
         throw new Error("Error fetching events:", error);
       }
+    },
+    users: async () => {
+      return User.find().populate("events");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate("events");
     },
     // users: async () => {
     //   return User.find();
@@ -50,6 +64,23 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    addEvent: async (
+      parent,
+      { name, date, description, location },
+      context
+    ) => {
+      if (context.user) {
+        const event = await Event.create({ name, date, description, location });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { events: event._id } }
+        );
+
+        return event;
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };

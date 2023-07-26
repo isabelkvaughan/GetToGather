@@ -7,6 +7,10 @@ import logo from "./GetToGather.png";
 import "./Header.css";
 
 const Header = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   //const navigate = useNavigate();
   //const [showModal, setShowModal] = useState(false);
   // const handleLogout = () => {
