@@ -9,3 +9,17 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+// Query with a filter for upcoming events
+export const QUERY_EVENTS = gql`
+  query {
+    events {
+      _id
+      name
+      date
+      location
+      description
+    }
+  }
+`;
+

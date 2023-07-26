@@ -1,33 +1,35 @@
 import React from 'react';
+import { useQuery } from "@apollo/client";
 import HomeEvent from './HomeEvent';
+import { QUERY_EVENTS } from '../../utils/queries';
+
 import "./Home.css";
 
 const Home = () => {
 
-// Sample Events Data
-const sampleEvents = [
-  {
-    eventName: "Event 1",
-    eventDate: "2023-07-28",
-    eventLocation: "Location 1",
-  },
-  {
-    eventName: "Event 2",
-    eventDate: "2023-07-30",
-    eventLocation: "Location 2",
-  },
-  // Add more event objects as needed
-];
+  // Use the useQuery hook to fetch events within the upcoming week from the database
+  const { loading, error, data } = useQuery(QUERY_EVENTS);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error fetching events: {error.message}</p>;
+  }
+
+  const events = data.events;
 
   return (
     <section>
       <h2>Discover Events This Week</h2>
-      {sampleEvents.map((event, index) => (
+      {events.map((event) => (
         <HomeEvent
-          key={index}
-          eventName={event.eventName}
-          eventDate={event.eventDate}
-          eventLocation={event.eventLocation}
+          key={event._id}
+          eventName={event.name}
+          eventDate={event.date}
+          eventLocation={event.location}
+          eventDescription={event.description}
         />
       ))}
     </section>
