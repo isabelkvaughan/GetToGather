@@ -21,7 +21,7 @@ const Header = () => {
             <Link to="/" className="nav-btn">
               Dashboard
             </Link>
-            <Link to="/" className="nav-btn">
+            <Link to="/addevent" className="nav-btn">
               Add Event
             </Link>
             <Link to="#" className="nav-btn" onClick={Auth.logout}>
