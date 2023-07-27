@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import EventForm from "../components/EventForm";
@@ -11,16 +11,14 @@ import Auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
+  console.log("userParam:", userParam);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
+  //console.log(data);
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
-  }
 
   if (loading) {
     return <div>Loading...</div>;
