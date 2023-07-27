@@ -23,12 +23,12 @@ const EventList = ({
               <p>{event.date}</p>
               <p>{event.location}</p>
             </div>
-            {/* <Link
+            <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/events/${event._id}`}
             >
-              Join the discussion on this thought.
-            </Link> */}
+              View Event.
+            </Link>
           </div>
         ))}
     </div>
