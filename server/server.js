@@ -33,10 +33,10 @@ const server = new ApolloServer({
 app.options("*", cors(corsOptions));
 
 // logging the connection to see db url
-console.log("connecting to mongodb...");
+//console.log("connecting to mongodb...");
 
 // logging the connection to see db url
-console.log("connecting to mongodb...");
+//console.log("connecting to mongodb...");
 //console.log("DB URL:", dbUrl);
 
 // //mongoose connection

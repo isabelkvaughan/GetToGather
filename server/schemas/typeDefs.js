@@ -14,6 +14,9 @@ const typeDefs = gql`
     email: String!
     password: String!
     events: [Event]!
+    upcomingEvents: [Event]!
+    hostedEvents: [Event]!
+    interestedEvents: [Event]!
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth

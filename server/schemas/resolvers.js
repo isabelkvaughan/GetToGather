@@ -5,6 +5,16 @@ const { Event } = require("../models");
 
 const resolvers = {
   Query: {
+
+    upcomingEvents: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).populate(
+          "upcomingEvents"
+        );
+        return userData.upcomingEvents
+      }
+      throw new AuthenticationError("Not logged in");
+    },
     events: async (parent, { username }) => {
       try {
         const params = username ? { username } : {};
@@ -33,9 +43,18 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+          "-__v -password")
+          .populate("events")
+          .populate("upcomingEvents")
+          .populate("hostedEvents")
+          .populate("interestedEvents");        
 
+          // Filtering the events that are upcoming 
+          const currentDate = new Date();
+          userData.upcomingEvents = userData.events.filter(
+            (event) => new Date(event.date) > currentDate
+          );
+          
         return userData;
       }
 
