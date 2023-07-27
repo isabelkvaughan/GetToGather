@@ -24,12 +24,6 @@ const EventList = ({
               <p>{event.description}</p>
               <p>{event.date}</p>
               <p>{event.location}</p>
-              <p>
-                Created by
-                <Link to={`/profile/${event.eventCreator}`}>
-                  {event.eventCreator}
-                </Link>
-              </p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
