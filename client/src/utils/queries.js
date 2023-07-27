@@ -41,6 +41,7 @@ export const QUERY_EVENTS = gql`
       date
       description
       location
+      eventCreator
     }
   }
 `;
@@ -52,6 +53,7 @@ export const QUERY_SINGLE_EVENT = gql`
       date
       description
       location
+      eventCreator
     }
   }
 `;

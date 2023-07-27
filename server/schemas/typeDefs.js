@@ -6,6 +6,7 @@ const typeDefs = gql`
     date: String!
     description: String!
     location: String!
+    eventCreator: String
   }
 
   type User {

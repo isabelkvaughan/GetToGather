@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import logo from "./GetToGather.png";
 import "./Header.css";
 
 const Header = () => {
+  const [username, setUsername] = useState(null);
+  const user_name = useParams();
+  console.log("user_name", user_name);
+  useEffect(() => {
+    // Fetch the username when the component mounts
+    const profile = Auth.getProfile();
+    console.log("Profile:", profile);
+    setUsername(profile?.username);
+  }, []);
+
+  console.log("LoggedIn:", Auth.loggedIn());
   return (
     <header>
       <div className="logo-container">
@@ -18,9 +30,11 @@ const Header = () => {
             <Link to="/" className="nav-btn">
               Home
             </Link>
-            <Link to="/" className="nav-btn">
+
+            <Link to={`/profile/${username}`} className="nav-btn">
               Dashboard
             </Link>
+
             <Link to="/addevent" className="nav-btn">
               Add Event
             </Link>

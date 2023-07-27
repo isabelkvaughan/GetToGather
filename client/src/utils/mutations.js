@@ -41,6 +41,7 @@ export const ADD_EVENT = gql`
       date
       description
       location
+      eventCreator
     }
   }
 `;

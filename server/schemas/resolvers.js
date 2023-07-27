@@ -71,7 +71,13 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
-        const event = await Event.create({ name, date, description, location });
+        const event = await Event.create({
+          name,
+          date,
+          description,
+          location,
+          eventCreator: context.user.username,
+        });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
