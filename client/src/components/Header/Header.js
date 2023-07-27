@@ -6,17 +6,6 @@ import logo from "./GetToGather.png";
 import "./Header.css";
 
 const Header = () => {
-  const [username, setUsername] = useState(null);
-  const user_name = useParams();
-  console.log("user_name", user_name);
-  useEffect(() => {
-    // Fetch the username when the component mounts
-    const profile = Auth.getProfile();
-    console.log("Profile:", profile);
-    setUsername(profile?.username);
-  }, []);
-
-  console.log("LoggedIn:", Auth.loggedIn());
   return (
     <header>
       <div className="logo-container">
@@ -31,7 +20,10 @@ const Header = () => {
               Home
             </Link>
 
-            <Link to={`/profile/${username}`} className="nav-btn">
+            <Link
+              to={`/profile/${Auth.getProfile().data.username}`}
+              className="nav-btn"
+            >
               Dashboard
             </Link>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   ApolloClient,
   ApolloProvider,
@@ -13,7 +14,7 @@ import Signup from "./components/Signup/Signup.js";
 import EventForm from "./components/EventForm";
 import SingleEvent from "./pages/SingleEvent";
 import Profile from "./pages/UserProfilePage";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import "./css/style.css";
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
