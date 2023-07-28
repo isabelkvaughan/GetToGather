@@ -27,9 +27,6 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("events");
     },
-    // users: async () => {
-    //   return User.find();
-    // },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
@@ -147,7 +144,7 @@ const resolvers = {
 
           // Return the updated user to show the refreshed savedEvents
           return updatedUser;
-          
+
         } catch (error) {
           throw new Error("Error removing saved event:", error);
         }

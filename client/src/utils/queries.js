@@ -24,10 +24,9 @@ export const QUERY_ME = gql`
       email
       events {
         _id
-        name
-        date
-        description
-        location
+      }
+      savedEvents {
+        _id
       }
     }
   }
