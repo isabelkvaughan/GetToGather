@@ -45,3 +45,34 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+export const ADD_SAVED_EVENT = gql`
+  mutation AddSavedEvent($userId: ID!, $eventId: ID!) {
+    addSavedEvent(userId: $userId, eventId: $eventId) {
+      _id
+      username
+      email
+      events {
+        _id
+      }
+      savedEvents {
+        _id
+
+      }
+    }
+  }
+`;
+export const REMOVE_SAVED_EVENT = gql`
+  mutation RemoveSavedEvent($userId: ID!, $eventId: ID!) {
+    removeSavedEvent(userId: $userId, eventId: $eventId) {
+      _id
+      username
+      email
+      events {
+        _id
+      }
+      savedEvents {
+        _id
+      }
+    }
+  }
+`;
