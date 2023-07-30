@@ -42,6 +42,7 @@ const typeDefs = gql`
     ): Event
     addSavedEvent(userId: ID!, eventId: ID!): User
     removeSavedEvent(userId: ID!, eventId: ID!): User
+    removeEvent(eventId: ID!): Event
   }
 `;
 
