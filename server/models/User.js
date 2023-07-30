@@ -27,6 +27,12 @@ const userSchema = new Schema(
         ref: "Event",
       },
     ],
+    savedEvents: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+      },
+    ],
   },
   {
     toJSON: {

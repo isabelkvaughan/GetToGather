@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import logo from "./GetToGather.png";
@@ -18,10 +19,15 @@ const Header = () => {
             <Link to="/" className="nav-btn">
               Home
             </Link>
-            <Link to="/" className="nav-btn">
+
+            <Link
+              to={`/profile/${Auth.getProfile().data.username}`}
+              className="nav-btn"
+            >
               Dashboard
             </Link>
-            <Link to="/" className="nav-btn">
+
+            <Link to="/addevent" className="nav-btn">
               Add Event
             </Link>
             <Link to="#" className="nav-btn" onClick={Auth.logout}>

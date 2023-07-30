@@ -24,10 +24,9 @@ export const QUERY_ME = gql`
       email
       events {
         _id
-        name
-        date
-        description
-        location
+      }
+      savedEvents {
+        _id
       }
     }
   }
@@ -41,6 +40,7 @@ export const QUERY_EVENTS = gql`
       date
       description
       location
+      eventCreator
     }
   }
 `;
@@ -52,6 +52,7 @@ export const QUERY_SINGLE_EVENT = gql`
       date
       description
       location
+      eventCreator
     }
   }
 `;

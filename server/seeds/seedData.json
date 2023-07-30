@@ -3,12 +3,14 @@
     "name": "Example Event 1",
     "date": "2023-07-25T00:00:00.000Z",
     "location": "Melbourne",
-    "description": "Party in Melbourne CBD!"
+    "description": "Party in Melbourne CBD!",
+    "eventCreator": "ABC"
   },
   {
     "name": "Example Event 2",
     "date": "2023-07-25T00:00:00.000Z",
     "location": "Melbourne",
-    "description": "Party at Monash!"
+    "description": "Party at Monash!",
+    "eventCreator": "Monash"
   }
 ]

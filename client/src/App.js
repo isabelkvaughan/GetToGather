@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   ApolloClient,
   ApolloProvider,
@@ -10,7 +11,10 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login.js";
 import Signup from "./components/Signup/Signup.js";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import EventForm from "./components/EventForm";
+import SingleEvent from "./pages/SingleEvent";
+import Profile from "./pages/UserProfilePage";
+
 import "./css/style.css";
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -46,6 +50,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              {/* <Route path="/me" element={<Profile />} /> */}
+              <Route path="/profile/:username" element={<Profile />} />
+              <Route path="/addevent" element={<EventForm />} />
+              <Route path="/events/:eventId" element={<SingleEvent />} />
             </Routes>
           </div>
         </div>

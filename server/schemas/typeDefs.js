@@ -6,6 +6,7 @@ const typeDefs = gql`
     date: String!
     description: String!
     location: String!
+    eventCreator: String
   }
 
   type User {
@@ -13,15 +14,13 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    events: [Event]!
+    events: [Event]
+    savedEvents: [Event]
     upcomingEvents: [Event]!
     hostedEvents: [Event]!
     interestedEvents: [Event]!
   }
-  type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-  }
+
   type Auth {
     token: ID!
     user: User
@@ -44,6 +43,8 @@ const typeDefs = gql`
       description: String!
       location: String!
     ): Event
+    addSavedEvent(userId: ID!, eventId: ID!): User
+    removeSavedEvent(userId: ID!, eventId: ID!): User
   }
 `;
 

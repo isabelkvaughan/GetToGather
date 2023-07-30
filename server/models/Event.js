@@ -22,6 +22,11 @@ const eventSchema = new Schema({
     type: String,
     required: true,
   },
+  eventCreator: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 const Event = model("Event", eventSchema);

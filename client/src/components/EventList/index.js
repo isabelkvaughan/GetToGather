@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./EventList.css";
 
 const EventList = ({
   events,
   title,
   showTitle = true,
-  showUsername = true,
+  //showUsername = true,
 }) => {
+  console.log(events);
   if (!events.length) {
     return <h3>No events Yet</h3>;
   }
 
   return (
-    <div>
+    <div className="home-event">
       {showTitle && <h3>{title}</h3>}
       {events &&
         events.map((event) => (
@@ -23,12 +25,12 @@ const EventList = ({
               <p>{event.date}</p>
               <p>{event.location}</p>
             </div>
-            {/* <Link
+            <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/events/${event._id}`}
             >
-              Join the discussion on this thought.
-            </Link> */}
+              View Event
+            </Link>
           </div>
         ))}
     </div>

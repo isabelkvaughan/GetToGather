@@ -11,6 +11,7 @@ const EventForm = () => {
     date: "",
     description: "",
     location: "",
+    eventCreator: "",
   });
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
@@ -45,6 +46,7 @@ const EventForm = () => {
           date: eventFormData.date, // No need for date conversion
           description: eventFormData.description,
           location: eventFormData.location,
+          eventCreator: Auth.getProfile().data.username,
         },
       });
       console.log(data);
@@ -52,7 +54,13 @@ const EventForm = () => {
       console.error(err);
     }
 
-    setEventFormData({ name: "", description: "", location: "", date: "" });
+    setEventFormData({
+      name: "",
+      description: "",
+      location: "",
+      date: "",
+      eventCreator: "",
+    });
   };
 
   const handleChange = (event) => {
