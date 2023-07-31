@@ -14,10 +14,12 @@ import Auth from "../utils/auth";
 
 const SingleEvent = () => {
   const { eventId } = useParams();
+  // Query the single event data
   const { loading, data } = useQuery(QUERY_SINGLE_EVENT, {
     // pass URL parameter
     variables: { eventId: eventId },
   });
+  // Get the event data from the query result
   const event = data?.event || {};
 
   const { loading: userLoading, data: userData } = useQuery(QUERY_ME);
@@ -92,10 +94,15 @@ const SingleEvent = () => {
     }
   }, [eventRemoved]);
 
-  // Update Event Mutation
+  //Update Functionality
 
-  const [updateEvent, { error: updateError }] = useMutation(UPDATE_EVENT);
+  // State to control the visibility of the update form
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+
   const [eventUpdated, setEventUpdated] = useState(false);
+
+  // Update Event Mutation
+  const [updateEvent, { error: updateError }] = useMutation(UPDATE_EVENT);
 
   useEffect(() => {
     if (data?.event) {
@@ -184,7 +191,13 @@ const SingleEvent = () => {
             </>
           )}
 
-          {Auth.loggedIn() && (
+          {Auth.loggedIn() && !showUpdateForm && (
+            <button onClick={() => setShowUpdateForm(true)}>
+              Update Event
+            </button>
+          )}
+
+          {showUpdateForm && (
             <>
               <h2>Edit Event</h2>
               <Form onSubmit={handleUpdateEvent}>
