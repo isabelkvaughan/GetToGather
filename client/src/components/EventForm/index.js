@@ -77,21 +77,14 @@ const EventForm = () => {
   };
   return (
     <div>
-      <h2>Add Event</h2>
+      <h2 className="eventhead">Add Event</h2>
       {Auth.loggedIn() ? (
         <>
-          <form onSubmit={handleFormSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Event Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Event Name"
-                name="name"
-                onChange={handleChange}
-                value={eventFormData.name}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
+        
+        
+        <form className="event-form" onSubmit={handleFormSubmit}>
+          <div className="event-desc-container">
+            <Form.Group className="eventdesc mb-3">
               <Form.Label>Event Description</Form.Label>
               <Form.Control
                 as="textarea"
@@ -102,7 +95,10 @@ const EventForm = () => {
                 value={eventFormData.description}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+          </div>
+
+          <div>
+            <Form.Group className="form-group mb-3">
               <Form.Label>Event Date</Form.Label>
               <Form.Control
                 type="date"
@@ -112,7 +108,17 @@ const EventForm = () => {
                 value={eventFormData.date}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="form-group mb-3">
+              <Form.Label>Event Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Event Name"
+                name="name"
+                onChange={handleChange}
+                value={eventFormData.name}
+              />
+            </Form.Group>
+            <Form.Group className="form-group mb-3">
               <Form.Label>Event Location</Form.Label>
               <Form.Control
                 type="text"
@@ -122,17 +128,19 @@ const EventForm = () => {
                 value={eventFormData.location}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Add Event
-            </Button>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
-          </form>
-        </>
-      ) : (
+          </div>
+
+          <Button variant="primary" type="submit">
+            Add Event
+          </Button>
+          {error && (
+            <div className="form-group col-12 my-3 bg-danger text-white p-3">
+              {error.message}
+            </div>
+          )}
+        </form>
+      </>
+    ) : (
         <p>
           You need to be logged in to see your events. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
