@@ -12,6 +12,7 @@
     "graphql": "^15.4.0",
     "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^2.2.0",
+    "manifest": "^0.1.4",
     "react": "^16.13.1",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^16.13.1",

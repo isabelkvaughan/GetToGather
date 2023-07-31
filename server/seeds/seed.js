@@ -12,7 +12,7 @@ const seedData = async () => {
     });
 
     // Read the seed data from the JSON file
-    const rawData = fs.readFileSync("./seeds/seedData.json");
+    const rawData = fs.readFileSync("./seedData.json");
     const eventsData = JSON.parse(rawData);
 
     // Insert the events into the database

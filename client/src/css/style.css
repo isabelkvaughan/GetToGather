@@ -81,3 +81,147 @@
 .auth-form a:hover {
   color: #ff9e44;
 }
+
+/* Event Page */
+
+
+.eventhead {
+
+  margin-top: 45px;
+  color: var(--light);
+  margin-bottom: 25px;
+  
+}
+
+
+.event-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+form .form-group {
+  display: flex;
+  flex-direction: column;
+ margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  flex: 1;
+  font-weight: bold;
+  color: var(--light);
+  margin-bottom: 5px;
+  width: 150px;
+  margin-right: 10px;
+  
+}
+
+.form-group input, .form-group textarea {
+  padding: 15px;
+  background-color: var(--quatrinary);
+  border: none;
+  border-radius: 15px;
+  flex: 1;
+  color: var(--light);
+}
+
+
+/* .event-form label {
+  display: block;
+  font-weight: bold;
+  color: var(--light);
+  margin-bottom: 5px;
+}
+
+.event-form textarea {
+  padding: 15px;
+  background-color: var(--quatrinary);
+  border: none;
+  border-radius: 15px;
+}
+
+.event-form input {
+
+  padding: 15px;
+  background-color: var(--quatrinary);
+  border: none;
+  border-radius: 15px;
+}
+*/
+.event-desc-container {
+  display: flex;
+  justify-content: flex-end; /* Align form groups to the right */
+}
+
+.form-feedback {
+  color: var(--secondary);
+}
+
+.btn.btn-primary {
+  background-color: var(--secondary);
+  color: var(--light);
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 150px;
+  font-weight: bold;
+}
+
+.btn.btn-primary:hover {
+  background-color: #ff9e44;;
+}
+
+.btn.btn-primary:active {
+  background-color: #ca7e36;;
+}
+.event-form button:hover {
+  background-color: #ff9e44;
+}
+
+.event-form p {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--light);
+}
+
+.event-form a {
+  color: var(--secondary);
+}
+
+.event-form a:hover {
+  color: #ff9e44;
+}
+
+.eventdesc {
+  position: absolute; 
+  left: 0;
+  top: 0;
+  height: 500px;
+  width: 500px; /* Adjust the width as needed */
+  z-index: 2;
+  
+}
+
+.eventdesc label {
+  color: white;
+  font-weight: bold;
+}
+
+
+.event-form .eventdesc textarea {
+  width: 520px; 
+  height: 351px; 
+  resize: none; 
+  background-color: var(--quatrinary);
+  border: none; 
+  border-radius: 15px;
+  padding: 20px; 
+  color: var(--light);
+  position: absolute; 
+  left: 0; 
+  top: 0; 
+}
