@@ -85,6 +85,13 @@ const SingleEvent = () => {
     }
   };
 
+  useEffect(() => {
+    if (eventRemoved) {
+      // Redirect to the profile page after removing the event
+      window.location.assign(`/profile/${Auth.getProfile().data.username}`);
+    }
+  }, [eventRemoved]);
+
   // Update Event Mutation
 
   const [updateEvent, { error: updateError }] = useMutation(UPDATE_EVENT);
@@ -236,16 +243,6 @@ const SingleEvent = () => {
               </Button>
             </>
           )}
-
-          {/* {Auth.loggedIn() && (
-            <>
-              {isEventSaved ? (
-                <Button onClick={handleRemoveSavedEvent}>Not Interested</Button>
-              ) : (
-                <Button onClick={handleSaveEvent}>I'm Interested</Button>
-              )}
-            </>
-          )} */}
         </>
       )}
     </div>
