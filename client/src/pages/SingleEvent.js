@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SINGLE_EVENT, QUERY_ME, QUERY_EVENTS } from "../utils/queries";
 import {
-  ADD_SAVED_EVENT,
-  REMOVE_SAVED_EVENT,
+  RSVP_GOING,
+  REMOVE_RSVP,
   REMOVE_EVENT,
   UPDATE_EVENT,
 } from "../utils/mutations";
@@ -29,29 +29,33 @@ const SingleEvent = () => {
     location: "",
   });
 
-  // Saving Event
-  const [addSavedEvent] = useMutation(ADD_SAVED_EVENT);
-  const handleSaveEvent = async () => {
-    try {
-      await addSavedEvent({
-        variables: { userId: userData?.me?._id, eventId: event._id },
-      });
-    } catch (error) {
-      console.error("Error saving event:", error);
-    }
-  };
+// Check if user has already RSVP'd
+const hasUserRSVPd = userData?.me?.rsvpGoing?.some(
+  (rsvpGoing) => rsvpGoing._id === event._id
+);
 
-  // Removing Saved Event
-  const [removeSavedEvent] = useMutation(REMOVE_SAVED_EVENT);
-  const handleRemoveSavedEvent = async () => {
-    try {
-      await removeSavedEvent({
+// Adding and Removing RSVP
+const [addRsvpGoing] = useMutation(RSVP_GOING);
+const [removeRsvp] = useMutation(REMOVE_RSVP);
+
+const handleRsvp = async (going) => {
+  try {
+    if (going) {
+      // Add RSVP
+      await addRsvpGoing({
         variables: { userId: userData?.me?._id, eventId: event._id },
       });
-    } catch (error) {
-      console.error("Error removing saved event:", error);
+    } else {
+      // Remove RSVP
+      await removeRsvp({
+        variables: { userId: userData?.me?._id, eventId: event._id },
+      });
     }
-  };
+  } catch (error) {
+    console.error("Error handling RSVP:", error);
+  }
+};
+
 
   // Remove Event Mutation
 
@@ -139,11 +143,6 @@ const SingleEvent = () => {
     return <div>Loading...</div>;
   }
 
-  // Check if event is saved
-  const isEventSaved = userData?.me?.savedEvents?.some(
-    (savedEvent) => savedEvent._id === event._id
-  );
-
   return (
     <div>
       {eventUpdated ? (
@@ -166,16 +165,28 @@ const SingleEvent = () => {
             <div>{event.date}</div>
             <div>{event.location}</div>
           </div>
-
+          <div>
           {Auth.loggedIn() && (
-            <>
-              {isEventSaved ? (
-                <Button onClick={handleRemoveSavedEvent}>Not Interested</Button>
-              ) : (
-                <Button onClick={handleSaveEvent}>I'm Interested</Button>
-              )}
-            </>
-          )}
+  <div>
+    <Button
+      variant={hasUserRSVPd ? "secondary" : "primary"}
+      className={hasUserRSVPd ? "dark-btn" : "light-btn"}
+      onClick={() => handleRsvp(true)}
+    >
+      I'm Going
+    </Button>
+    <Button
+      variant={hasUserRSVPd ? "primary" : "secondary"}
+      className={hasUserRSVPd ? "light-btn" : "dark-btn"}
+      onClick={() => handleRsvp(false)}
+      style={{ marginLeft: '10px' }}
+    >
+      Not Going
+    </Button>
+  </div>
+)}
+
+          </div>
 
           {Auth.loggedIn() && (
             <>
@@ -236,16 +247,6 @@ const SingleEvent = () => {
               </Button>
             </>
           )}
-
-          {/* {Auth.loggedIn() && (
-            <>
-              {isEventSaved ? (
-                <Button onClick={handleRemoveSavedEvent}>Not Interested</Button>
-              ) : (
-                <Button onClick={handleSaveEvent}>I'm Interested</Button>
-              )}
-            </>
-          )} */}
         </>
       )}
     </div>

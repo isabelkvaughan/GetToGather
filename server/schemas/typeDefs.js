@@ -15,7 +15,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     events: [Event]
-    savedEvents: [Event]
+    rsvpGoing: [Event]
   }
 
   type Auth {
@@ -40,8 +40,8 @@ const typeDefs = gql`
       description: String!
       location: String!
     ): Event
-    addSavedEvent(userId: ID!, eventId: ID!): User
-    removeSavedEvent(userId: ID!, eventId: ID!): User
+    addRsvpGoing(userId: ID!, eventId: ID!): User
+    removeRsvp(userId: ID!, eventId: ID!): User
     removeEvent(eventId: ID!): Event
     updateEvent(
       eventId: ID!
