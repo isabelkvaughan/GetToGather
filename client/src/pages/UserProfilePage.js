@@ -1,24 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
-import EventForm from "../components/EventForm";
-import EventList from "../components/EventList";
 import DashboardGoing from "../components/DashboardGoing";
 import DashboardHosting from "../components/DashboardHosting";
-
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-
-import Auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  // console.log("userParam:", userParam);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  //console.log(data);
 
   const user = data?.me || data?.user || {};
 
@@ -37,13 +29,15 @@ const Profile = () => {
 
   return (
     <div>
-      <div>
-      <DashboardHosting user={user} />
+      <div className="row">
+        <div className="col-lg-6">
+          <DashboardHosting user={user} />
+        </div>
+        <div className="col-lg-6">
+          <DashboardGoing user={user} />
+        </div>
+      </div>
     </div>
-    <div>
-    <DashboardGoing user={user} />
-    </div>
-  </div>
   );
 };
 
