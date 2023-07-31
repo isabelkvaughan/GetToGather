@@ -56,7 +56,6 @@ export const ADD_SAVED_EVENT = gql`
       }
       savedEvents {
         _id
-
       }
     }
   }
@@ -73,6 +72,44 @@ export const REMOVE_SAVED_EVENT = gql`
       savedEvents {
         _id
       }
+    }
+  }
+`;
+
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($eventId: ID!) {
+    removeEvent(eventId: $eventId) {
+      _id
+      name
+      date
+      description
+      location
+      eventCreator
+    }
+  }
+`;
+
+export const UPDATE_EVENT = gql`
+  mutation updateEvent(
+    $eventId: ID!
+    $name: String!
+    $date: String!
+    $description: String!
+    $location: String!
+  ) {
+    updateEvent(
+      eventId: $eventId
+      name: $name
+      date: $date
+      description: $description
+      location: $location
+    ) {
+      _id
+      name
+      date
+      description
+      location
+      eventCreator
     }
   }
 `;

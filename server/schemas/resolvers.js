@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+const jwt = require("jsonwebtoken");
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 const { Event } = require("../models");
@@ -89,68 +90,114 @@ const resolvers = {
       if (context.user) {
         try {
           const user = await User.findById(userId);
-  
+
           if (!user) {
             throw new Error("User not found.");
           }
-  
+
           const event = await Event.findById(eventId);
-  
+
           if (!event) {
             throw new Error("Event not found.");
           }
-  
+
           // Check if the event is already saved to prevent duplicate saves
           if (user.savedEvents.includes(eventId)) {
             throw new Error("Event already saved.");
           }
-  
+
           // Add the event to the user's savedEvents array
           user.savedEvents.push(eventId);
           await user.save();
-  
+
           // Return the updated user to show the savedEvents
           return user;
         } catch (error) {
           throw new Error("Error adding saved event:", error);
         }
       }
-  
+
       throw new AuthenticationError("You need to be logged in!");
     },
     removeSavedEvent: async (parent, { userId, eventId }, context) => {
       if (context.user) {
         try {
           const user = await User.findById(userId);
-  
+
           if (!user) {
             throw new Error("User not found.");
           }
-  
+
           // Check if the event is saved to remove it
           if (!user.savedEvents.includes(eventId)) {
             throw new Error("Event is not saved.");
           }
-  
+
           // Use $pull to remove the specific eventId from the savedEvents array
           await User.findOneAndUpdate(
             { _id: userId },
             { $pull: { savedEvents: eventId } },
             { new: true }
           );
-  
+
           // Fetch the updated user data from the database
           const updatedUser = await User.findById(userId);
 
           // Return the updated user to show the refreshed savedEvents
           return updatedUser;
-
         } catch (error) {
           throw new Error("Error removing saved event:", error);
         }
       }
-  
+
       throw new AuthenticationError("You need to be logged in!");
+    },
+    removeEvent: async (parent, { eventId }, context) => {
+      if (context.user) {
+        const event = await Event.findOneAndDelete({
+          _id: eventId,
+          eventCreator: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { events: event._id } }
+        );
+
+        return event;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateEvent: async (
+      parent,
+      { eventId, name, date, description, location },
+      context
+    ) => {
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to update an event."
+        );
+      }
+      const event = await Event.findById(eventId);
+
+      // Check if the user trying to update the event is the eventCreator
+      if (event.eventCreator !== context.user.username) {
+        throw new AuthenticationError(
+          "You are not authorized to update this event."
+        );
+      }
+      try {
+        // Update the event document
+        const updatedEvent = await Event.findByIdAndUpdate(
+          eventId,
+          { name, date, description, location },
+          { new: true }
+        );
+        console.log("Updated event:", event);
+        return updatedEvent;
+      } catch (err) {
+        throw new Error("Failed to update event");
+      }
     },
   },
 };
