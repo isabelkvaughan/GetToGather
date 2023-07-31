@@ -25,7 +25,7 @@ export const QUERY_ME = gql`
       events {
         _id
       }
-      savedEvents {
+      rsvpGoing {
         _id
       }
     }

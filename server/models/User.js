@@ -27,7 +27,7 @@ const userSchema = new Schema(
         ref: "Event",
       },
     ],
-    savedEvents: [
+    rsvpGoing: [
       {
         type: Schema.Types.ObjectId,
         ref: "Event",
