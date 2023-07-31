@@ -86,7 +86,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addSavedEvent: async (parent, { userId, eventId }, context) => {
+    addRsvpGoing: async (parent, { userId, eventId }, context) => {
       if (context.user) {
         try {
           const user = await User.findById(userId);
@@ -101,25 +101,25 @@ const resolvers = {
             throw new Error("Event not found.");
           }
 
-          // Check if the event is already saved to prevent duplicate saves
-          if (user.savedEvents.includes(eventId)) {
-            throw new Error("Event already saved.");
+          // Check if user has already RSVP'd to prevent duplicate saves
+          if (user.rsvpGoing.includes(eventId)) {
+            throw new Error("User has already RSVP'd.");
           }
 
-          // Add the event to the user's savedEvents array
-          user.savedEvents.push(eventId);
+          // Add the event to the user's rsvpGoing array
+          user.rsvpGoing.push(eventId);
           await user.save();
 
-          // Return the updated user to show the savedEvents
+          // Return the updated user to show the rsvpGoing
           return user;
         } catch (error) {
-          throw new Error("Error adding saved event:", error);
+          throw new Error("Error adding RSVP:", error);
         }
       }
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeSavedEvent: async (parent, { userId, eventId }, context) => {
+    removeRsvp: async (parent, { userId, eventId }, context) => {
       if (context.user) {
         try {
           const user = await User.findById(userId);
@@ -128,22 +128,22 @@ const resolvers = {
             throw new Error("User not found.");
           }
 
-          // Check if the event is saved to remove it
-          if (!user.savedEvents.includes(eventId)) {
-            throw new Error("Event is not saved.");
+          // Check if user has already RSVP'd to remove it
+          if (!user.rsvpGoing.includes(eventId)) {
+            throw new Error("User has not RSVP'd.");
           }
 
-          // Use $pull to remove the specific eventId from the savedEvents array
+          // Use $pull to remove the specific eventId from the rsvpGoing array
           await User.findOneAndUpdate(
             { _id: userId },
-            { $pull: { savedEvents: eventId } },
+            { $pull: { rsvpGoing: eventId } },
             { new: true }
           );
 
           // Fetch the updated user data from the database
           const updatedUser = await User.findById(userId);
 
-          // Return the updated user to show the refreshed savedEvents
+          // Return the updated user to show the refreshed rsvpGoing
           return updatedUser;
         } catch (error) {
           throw new Error("Error removing saved event:", error);
