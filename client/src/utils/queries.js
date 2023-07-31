@@ -27,6 +27,11 @@ export const QUERY_ME = gql`
       }
       rsvpGoing {
         _id
+        name
+        date
+        description
+        location
+        eventCreator
       }
     }
   }

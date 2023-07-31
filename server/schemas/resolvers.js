@@ -23,10 +23,10 @@ const resolvers = {
       }
     },
     users: async () => {
-      return User.find().populate("events");
+      return User.find().populate("events").populate("rsvpGoing");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("events");
+      return User.findOne({ username }).populate("events").populate("rsvpGoing");
     },
     me: async (parent, args, context) => {
       if (context.user) {
