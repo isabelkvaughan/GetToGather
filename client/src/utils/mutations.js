@@ -88,3 +88,28 @@ export const REMOVE_EVENT = gql`
     }
   }
 `;
+
+export const UPDATE_EVENT = gql`
+  mutation updateEvent(
+    $eventId: ID!
+    $name: String!
+    $date: String!
+    $description: String!
+    $location: String!
+  ) {
+    updateEvent(
+      eventId: $eventId
+      name: $name
+      date: $date
+      description: $description
+      location: $location
+    ) {
+      _id
+      name
+      date
+      description
+      location
+      eventCreator
+    }
+  }
+`;

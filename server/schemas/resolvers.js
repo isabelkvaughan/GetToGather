@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+const jwt = require("jsonwebtoken");
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 const { Event } = require("../models");
@@ -166,6 +167,37 @@ const resolvers = {
         return event;
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    updateEvent: async (
+      parent,
+      { eventId, name, date, description, location },
+      context
+    ) => {
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to update an event."
+        );
+      }
+      const event = await Event.findById(eventId);
+
+      // Check if the user trying to update the event is the eventCreator
+      if (event.eventCreator !== context.user.username) {
+        throw new AuthenticationError(
+          "You are not authorized to update this event."
+        );
+      }
+      try {
+        // Update the event document
+        const updatedEvent = await Event.findByIdAndUpdate(
+          eventId,
+          { name, date, description, location },
+          { new: true }
+        );
+        console.log("Updated event:", event);
+        return updatedEvent;
+      } catch (err) {
+        throw new Error("Failed to update event");
+      }
     },
   },
 };
