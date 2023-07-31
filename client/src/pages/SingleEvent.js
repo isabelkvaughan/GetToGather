@@ -31,33 +31,32 @@ const SingleEvent = () => {
     location: "",
   });
 
-// Check if user has already RSVP'd
-const hasUserRSVPd = userData?.me?.rsvpGoing?.some(
-  (rsvpGoing) => rsvpGoing._id === event._id
-);
+  // Check if user has already RSVP'd
+  const hasUserRSVPd = userData?.me?.rsvpGoing?.some(
+    (rsvpGoing) => rsvpGoing._id === event._id
+  );
 
-// Adding and Removing RSVP
-const [addRsvpGoing] = useMutation(RSVP_GOING);
-const [removeRsvp] = useMutation(REMOVE_RSVP);
+  // Adding and Removing RSVP
+  const [addRsvpGoing] = useMutation(RSVP_GOING);
+  const [removeRsvp] = useMutation(REMOVE_RSVP);
 
-const handleRsvp = async (going) => {
-  try {
-    if (going) {
-      // Add RSVP
-      await addRsvpGoing({
-        variables: { userId: userData?.me?._id, eventId: event._id },
-      });
-    } else {
-      // Remove RSVP
-      await removeRsvp({
-        variables: { userId: userData?.me?._id, eventId: event._id },
-      });
+  const handleRsvp = async (going) => {
+    try {
+      if (going) {
+        // Add RSVP
+        await addRsvpGoing({
+          variables: { userId: userData?.me?._id, eventId: event._id },
+        });
+      } else {
+        // Remove RSVP
+        await removeRsvp({
+          variables: { userId: userData?.me?._id, eventId: event._id },
+        });
+      }
+    } catch (error) {
+      console.error("Error handling RSVP:", error);
     }
-  } catch (error) {
-    console.error("Error handling RSVP:", error);
-  }
-};
-
+  };
 
   // Remove Event Mutation
 
@@ -118,6 +117,10 @@ const handleRsvp = async (going) => {
       });
     }
   }, [data]);
+
+  // to check whether the event is created by the user or not
+  const userCreatedEvent =
+    Auth.getProfile()?.data?.username === event.eventCreator;
 
   const handleUpdateEvent = async (event) => {
     event.preventDefault();
@@ -180,35 +183,47 @@ const handleRsvp = async (going) => {
             <div>{event.location}</div>
           </div>
           <div>
-          {Auth.loggedIn() && (
-  <div>
-    <Button
-      variant={hasUserRSVPd ? "secondary" : "primary"}
-      className={hasUserRSVPd ? "dark-btn" : "light-btn"}
-      onClick={() => handleRsvp(true)}
-    >
-      I'm Going
-    </Button>
-    <Button
-      variant={hasUserRSVPd ? "primary" : "secondary"}
-      className={hasUserRSVPd ? "light-btn" : "dark-btn"}
-      onClick={() => handleRsvp(false)}
-      style={{ marginLeft: '10px' }}
-    >
-      Not Going
-    </Button>
-  </div>
-)}
-
+            {Auth.loggedIn() && (
+              <div>
+                <Button
+                  variant={hasUserRSVPd ? "secondary" : "primary"}
+                  className={hasUserRSVPd ? "dark-btn" : "light-btn"}
+                  onClick={() => handleRsvp(true)}
+                >
+                  I'm Going
+                </Button>
+                <Button
+                  variant={hasUserRSVPd ? "primary" : "secondary"}
+                  className={hasUserRSVPd ? "light-btn" : "dark-btn"}
+                  onClick={() => handleRsvp(false)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Not Going
+                </Button>
+              </div>
+            )}
           </div>
-
-          {Auth.loggedIn() && !showUpdateForm && (
-            <button onClick={() => setShowUpdateForm(true)}>
-              Update Event
-            </button>
+          {userCreatedEvent && (
+            <div>
+              Please click the update button to update and remove button to
+              remove the event
+            </div>
           )}
-
-          {showUpdateForm && (
+          {Auth.loggedIn() && userCreatedEvent && (
+            <Button onClick={() => setShowUpdateForm(true)}>
+              Update Event
+            </Button>
+          )}
+          {Auth.loggedIn() && userCreatedEvent && (
+            <Button
+              variant="danger"
+              onClick={() => handleRemoveEvent(event._id)}
+              className="mt-3"
+            >
+              Remove Event
+            </Button>
+          )}
+          {showUpdateForm && userCreatedEvent && (
             <>
               <h2>Edit Event</h2>
               <Form onSubmit={handleUpdateEvent}>
@@ -258,13 +273,6 @@ const handleRsvp = async (going) => {
                   </div>
                 )}
               </Form>
-              <Button
-                variant="danger"
-                onClick={() => handleRemoveEvent(event._id)}
-                className="mt-3"
-              >
-                Remove Event
-              </Button>
             </>
           )}
         </>
