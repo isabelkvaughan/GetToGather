@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../../utils/mutations";
@@ -13,6 +13,7 @@ const EventForm = () => {
     location: "",
     eventCreator: "",
   });
+  const [eventAdded, setEventAdded] = useState(false);
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
       try {
@@ -38,8 +39,6 @@ const EventForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      //   const dateObject = new Date(eventFormData.date);
-      //   const formattedDate = dateObject.toISOString();
       const { data } = await addEvent({
         variables: {
           name: eventFormData.name,
@@ -50,6 +49,8 @@ const EventForm = () => {
         },
       });
       console.log(data);
+      // Set the eventAdded state to true to trigger the redirect
+      setEventAdded(true);
     } catch (err) {
       console.error(err);
     }
@@ -62,6 +63,13 @@ const EventForm = () => {
       eventCreator: "",
     });
   };
+
+  useEffect(() => {
+    if (eventAdded) {
+      // Redirect to the profile page after removing the event
+      window.location.assign(`/profile/${Auth.getProfile().data.username}`);
+    }
+  }, [eventAdded]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
