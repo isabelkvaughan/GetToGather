@@ -166,10 +166,8 @@ const SingleEvent = () => {
             <div>{event.date}</div>
             <div>{event.location}</div>
           </div>
-          {/* <Button variant="danger" onClick={() => handleRemoveEvent(event._id)}>
-            Remove Event
-          </Button> */}
-          {/* {Auth.loggedIn() && (
+
+          {Auth.loggedIn() && (
             <>
               {isEventSaved ? (
                 <Button onClick={handleRemoveSavedEvent}>Not Interested</Button>
@@ -177,7 +175,7 @@ const SingleEvent = () => {
                 <Button onClick={handleSaveEvent}>I'm Interested</Button>
               )}
             </>
-          )} */}
+          )}
 
           {Auth.loggedIn() && (
             <>
