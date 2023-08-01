@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_SINGLE_EVENT, QUERY_ME, QUERY_EVENTS } from "../utils/queries";
+import { QUERY_SINGLE_EVENT, QUERY_ME } from "../utils/queries";
 import { UPDATE_EVENT } from "../utils/mutations";
 import Auth from "../utils/auth";
 
