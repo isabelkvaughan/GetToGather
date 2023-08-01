@@ -243,7 +243,37 @@ form .form-group {
 }
 
 
-@media (max-width:991px) {
+/* Single Event Page */
+.singleeventcontainer {
+margin: auto;
+text-align: center;
+}
+.event-title {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: var(--light);
+}
+.loc-n-date {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.event-desc-se {
+  padding-bottom: 10px;
+}
+
+.event-detail {
+  border-radius: 15px;
+  background-color: var(--quatrinary);
+  padding: 10px;
+  color: var(--dark);
+}
+
+.rsvpbuttonscontainer {
+  padding: 10px;
+  margin-top: 10px;
+}
+/* @media (max-width:991px) {
   .hidden-below-991 {
     display: none;
   }
@@ -254,3 +284,35 @@ form .form-group {
     display: none;
   }
 }
+ */
+
+ /* single event btn css */
+
+ .btn.dark-btn {
+  background-color: var(--secondary);
+  color: var(--light);
+padding: 10px;
+width: 150px;
+font-weight: bold;
+transition: background-color 0.2s ease;
+border: none;
+ }
+ .btn.dark-btn:active {
+  background-color: #cc7314;
+ }
+
+ .btn.light-btn {
+  background-color: var(--quatrinary);
+  font-weight: lighter;
+  border: none;
+  transition: background-color 0.2s ease;
+ }
+
+ .btn.light-btn:hover {
+  cursor: pointer;
+  background-color:#738492
+  
+ }
+ .btn.light-btn:active {
+  background-color: gray;
+ }
