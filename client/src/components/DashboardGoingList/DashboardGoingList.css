@@ -7,16 +7,6 @@
   --dark: #0d4a6a;
 }
 
-/* Event List Styles */
-.home-event {
-  background-color: var(--quatrinary);
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 25px;
-  color: var(--dark);
-  text-align: center;
-}
-
 .card {
   border: none;
   margin-bottom: 20px;
@@ -47,13 +37,32 @@
   margin: 0;
 }
 
-.event-link {
+.dash-btn {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  width: 120px;
+  background-color: var(--primary);
+  color: var(--light);
   text-decoration: none;
-  color: var(--dark);
+  transition: filter 0.3s ease;
 }
 
-.event-link:hover {
+.dash-btn:hover {
   filter: brightness(1.2);
+  color: var(--light);
+}
+
+.dash-btn-primary {
+  background-color: var(--secondary);
+}
+
+.dash-btn-update {
+  background-color: var(--primary);
+}
+
+.dash-btn-delete {
+  background-color: #ed514c;
 }
 
 .button-container {
@@ -61,22 +70,4 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-}
-
-.btn-primary {
-  background-color: var(--primary);
-}
-
-.btn-primary:hover {
-  filter: brightness(1.2);
-  color: var(--light);
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
-}
-
-.btn-squared {
-  border-radius: 25px;
 }

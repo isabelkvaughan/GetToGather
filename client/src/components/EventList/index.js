@@ -10,28 +10,25 @@ const EventList = ({
 }) => {
   console.log(events);
   if (!events.length) {
-    return <h3>No events Yet</h3>;
+    return <h4 className="no-events">No events yet</h4>;
   }
 
   return (
-    <div className="home-event">
+    <div>
       {showTitle && <h3>{title}</h3>}
       {events &&
         events.map((event) => (
-          <div key={event._id} className="card mb-3">
-            <div className="card-body bg-light p-2">
-              <p>{event.name}</p>
-              <p>{event.description}</p>
-              <p>{event.date}</p>
-              <p>{event.location}</p>
+          <Link key={event._id} to={`/events/${event._id}`} className="event-link">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="event-name">{event.name}</h4>
+                <p>{event.description}</p>
+                <div className="event-details">
+                  <p>{event.date} | {event.location}</p>
+                </div>
+              </div>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/events/${event._id}`}
-            >
-              View Event
-            </Link>
-          </div>
+          </Link>
         ))}
     </div>
   );
