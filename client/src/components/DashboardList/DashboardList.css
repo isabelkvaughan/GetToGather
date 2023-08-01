@@ -61,8 +61,21 @@
   background-color: var(--primary);
 }
 
-.dash-btn-delete {
+#dash-btn-delete {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  width: 120px;
+  background-color: var(--primary);
+  color: var(--light);
+  text-decoration: none;
+  transition: filter 0.3s ease;
   background-color: #ed514c;
+}
+
+#dash-btn:hover {
+  filter: brightness(1.2);
+  color: var(--light);
 }
 
 .button-container {
