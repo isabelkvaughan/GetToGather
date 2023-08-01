@@ -1,16 +1,16 @@
 :root {
-    --primary: #00CACA;
-    --secondary: #FE8E17;
-    --tertiary: #F6C0CA;
-    --quatrinary: #8EA5B7;
-    --light: #fff;
-    --dark: #0D4A6A;
-  }
+  --primary: #00caca;
+  --secondary: #fe8e17;
+  --tertiary: #f6c0ca;
+  --quatrinary: #8ea5b7;
+  --light: #fff;
+  --dark: #0d4a6a;
+}
 
 /* Body */
 .body {
-    background-color: var(--dark);
-    font-family: 'Poppins', sans-serif;
+  background-color: var(--dark);
+  font-family: "Poppins", sans-serif;
 }
 
 /* Log In / Sign Up  */
@@ -30,13 +30,13 @@
 .auth-form form {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 .form-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .auth-form label {
   font-weight: bold;
@@ -85,27 +85,22 @@
 
 /* Event Page */
 
-
 .eventhead {
-
   margin-top: 45px;
   color: var(--light);
   margin-bottom: 25px;
-  
 }
-
 
 .event-form {
   position: relative;
   display: flex;
   flex-direction: column;
-
 }
 
 form .form-group {
   display: flex;
   flex-direction: column;
- margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .form-group label {
@@ -114,12 +109,12 @@ form .form-group {
   font-weight: bold;
   color: var(--light);
   margin-bottom: 5px;
-  width: 150px;
+  /* width: 150px; */
   margin-right: 10px;
-  
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
   padding: 15px;
   background-color: var(--quatrinary);
   border: none;
@@ -127,7 +122,6 @@ form .form-group {
   flex: 1;
   color: var(--dark);
 }
-
 
 /* .event-form label {
   display: block;
@@ -176,11 +170,11 @@ form .form-group {
   margin: auto;
 }
 .btn.btn-primary:hover {
-  background-color: #ff9e44;;
+  background-color: #ff9e44;
 }
 
 .btn.btn-primary:active {
-  background-color: #ca7e36;;
+  background-color: #ca7e36;
 }
 .event-form button:hover {
   background-color: #ff9e44;
@@ -201,17 +195,15 @@ form .form-group {
 }
 
 .eventdesc {
-  position: relative; 
+  position: relative;
   left: 0;
   top: 0;
- /* height: 500px; */
-  width: 500px; 
+  /* height: 500px; */
+  width: 500px;
   z-index: 2;
-/* padding-left: 15px; */
-padding-right: 15px;
+  /* padding-left: 15px; */
+  padding-right: 15px;
 }
-
-
 
 .eventdesc label {
   margin-top: 10px;
@@ -222,16 +214,16 @@ padding-right: 15px;
 }
 
 .eventdesc textarea {
-  width: 520px; 
-  height: 262px; 
-  resize: none; 
+  width: 520px;
+  height: 262px;
+  resize: none;
   background-color: var(--quatrinary);
-  border: none; 
+  border: none;
   border-radius: 15px;
-  padding: 20px; 
+  padding: 20px;
   color: var(--dark);
-  left: 0; 
-  top: 0; 
+  left: 0;
+  top: 0;
 }
 
 /* Dashboard Styling */
@@ -253,10 +245,9 @@ padding-right: 15px;
 
 @media (max-width:991px) {
   .hidden-below-991 {
-  display: none;
+    display: none;
+  }
 }
-}
-
 
 @media (min-width: 992px) {
   .hidden-above-991 {

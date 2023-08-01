@@ -15,6 +15,7 @@ import Signup from "./components/Signup/Signup.js";
 import EventForm from "./components/EventForm";
 import SingleEvent from "./pages/SingleEvent";
 import Profile from "./pages/UserProfilePage";
+import UpdateEvent from "./pages/UpdateEvent";
 
 import "./css/style.css";
 // Construct our main GraphQL API endpoint
@@ -55,6 +56,7 @@ function App() {
               {/* <Route path="/me" element={<Profile />} /> */}
               <Route path="/profile/:username" element={<Profile />} />
               <Route path="/addevent" element={<EventForm />} />
+              <Route path="/update/:eventId" element={<UpdateEvent />} />
               <Route path="/events/:eventId" element={<SingleEvent />} />
             </Routes>
           </div>
