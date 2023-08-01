@@ -18,7 +18,9 @@ const DashboardList = ({ events, title, showTitle = true }) => {
               <h4 className="event-name">{event.name}</h4>
               <p>{event.description}</p>
               <div className="event-details">
-                <p>{event.date}   |   {event.location}</p>
+                <p>
+                  {event.date} | {event.location}
+                </p>
               </div>
             </div>
             <div className="button-container">
@@ -30,7 +32,7 @@ const DashboardList = ({ events, title, showTitle = true }) => {
               </Link>
               <Link
                 className="dash-btn dash-btn-update"
-                to={`/events/${event._id}`}
+                to={`/update/${event._id}`}
               >
                 Update
               </Link>
