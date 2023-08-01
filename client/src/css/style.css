@@ -170,10 +170,11 @@ form .form-group {
   cursor: pointer;
   width: 150px;
   font-weight: bold;
-  
-  
+  margin: auto;
 }
-
+.buttoncontainer {
+  margin: auto;
+}
 .btn.btn-primary:hover {
   background-color: #ff9e44;;
 }
@@ -248,6 +249,7 @@ padding-right: 15px;
   text-align: center;
   margin-top: 25px;
 }
+
 
 @media (max-width:991px) {
   .hidden-below-991 {
