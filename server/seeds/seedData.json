@@ -1,16 +1,58 @@
 [
   {
-    "name": "Example Event 1",
-    "date": "2023-07-25T00:00:00.000Z",
-    "location": "Melbourne",
-    "description": "Party in Melbourne CBD!",
-    "eventCreator": "ABC"
+    "name": "Sunset Beach Bonfire",
+    "date": "2023-08-05T17:30:00.000Z",
+    "location": "Bondi Beach, Sydney",
+    "description": "Join us for a relaxing evening by the waves at the Sunset Beach Bonfire on Bondi Beach, Sydney. As the sun sets over the horizon, gather around the crackling bonfire with your friends and loved ones. Enjoy toasted marshmallows, laughter, and good vibes as you make memories to cherish forever. Bring your beach blankets and cozy up by the fire as the salty sea breeze envelops you. Live music and beach games will add to the fun-filled atmosphere. This event is a fantastic opportunity to unwind, share stories, and connect with new friends against the backdrop of Sydney's most famous beach.",
+    "eventCreator": "BeachVibes"
   },
   {
-    "name": "Example Event 2",
-    "date": "2023-07-25T00:00:00.000Z",
-    "location": "Melbourne",
-    "description": "Party at Monash!",
-    "eventCreator": "Monash"
+    "name": "Urban Rooftop Cinema",
+    "date": "2023-08-18T19:00:00.000Z",
+    "location": "Melbourne CBD",
+    "description": "Experience movies like never before at the Urban Rooftop Cinema in the heart of Melbourne CBD. Gather your pals and head to the rooftop of a trendy building, where you'll be treated to a night of entertainment under the stars. Snuggle up with blankets and cushions as you watch a curated selection of classic and contemporary films on a large outdoor screen. Indulge in gourmet popcorn and a variety of refreshments from the rooftop bar. The spectacular city skyline will serve as the perfect backdrop for this cinematic adventure.",
+    "eventCreator": "CityFlix"
+  },
+  {
+    "name": "Art & Sip Gallery Night",
+    "date": "2023-09-08T18:00:00.000Z",
+    "location": "Fitzroy, Melbourne",
+    "description": "Unleash your inner artist and indulge your senses at the Art & Sip Gallery Night in the artsy suburb of Fitzroy, Melbourne. This creatively inspiring event combines the best of art, wine, and good company. Join fellow art enthusiasts for a guided tour of local art galleries showcasing the works of talented Australian artists. As you appreciate the masterpieces, you'll have the opportunity to sip on exquisite wines and enjoy gourmet finger foods. Engage in interactive art workshops where you can try your hand at painting and other creative expressions. Whether you're an art connoisseur or just exploring your artistic side, this social event promises a delightful blend of culture and camaraderie.",
+    "eventCreator": "ArtisticConnections"
+  },
+  {
+    "name": "Aussie BBQ & Games Day",
+    "date": "2023-08-12T12:00:00.000Z",
+    "location": "Kings Park, Perth",
+    "description": "Grab your sunscreen and join us for a true-blue Aussie BBQ & Games Day at Kings Park, Perth. Celebrate the Australian way of life with a laid-back day of fun, food, and friendly competitions. The BBQ will be sizzling with mouthwatering snags and burgers, while chilled drinks keep you cool. Engage in traditional backyard games like cricket, beach volleyball, and tug-of-war, or simply relax on picnic blankets and enjoy the company of your friends. With laughter and good times guaranteed, this event offers the perfect opportunity to bask in the beauty of Perth's greenery and revel in the spirit of mateship.",
+    "eventCreator": "Aussie Outdoors Club"
+  },
+  {
+    "name": "Riverside Jazz Picnic",
+    "date": "2023-09-03T14:00:00.000Z",
+    "location": "South Bank, Brisbane",
+    "description": "Take a leisurely stroll to South Bank, Brisbane, and join us for a delightful Riverside Jazz Picnic by the Brisbane River. This charming afternoon event combines soothing jazz melodies with a picturesque riverside setting. Spread out your picnic blankets on the lush green lawns and enjoy a serene atmosphere with friends. Talented jazz bands will entertain you with soulful tunes while you indulge in delicious gourmet picnic baskets filled with a variety of delectable treats. Feel free to dance, relax, and revel in the company of fellow jazz enthusiasts. It's the perfect way to spend a lazy Saturday afternoon in the heart of Brisbane.",
+    "eventCreator": "RiverJazz"
+  },
+  {
+    "name": "Neon Night Fun Run",
+    "date": "2023-08-26T19:30:00.000Z",
+    "location": "The Domain, Sydney",
+    "description": "Get ready to light up the night at the Neon Night Fun Run in The Domain, Sydney. This electrifying event is a 5km fun run that takes place after sunset. Runners and walkers of all fitness levels are welcome to join this glowing extravaganza. Put on your brightest neon outfits and adorn yourself with glow accessories, as you navigate the illuminated course. As you pass through neon tunnels and glow stations, the atmosphere will be pulsing with energy and excitement. Live DJs will keep you motivated with upbeat tunes.",
+    "eventCreator": "NightGlow"
+  },
+  {
+    "name": "Rooftop Karaoke Night",
+    "date": "2023-08-19T20:00:00.000Z",
+    "location": "Surry Hills, Sydney",
+    "description": "It's time to unleash your inner diva and sing your heart out at the Rooftop Karaoke Night in Surry Hills, Sydney. Gather your friends and head to the trendy rooftop bar for an evening of musical fun and laughter. The stage is set, the lyrics are on the screen, and the spotlight is yours. Choose from a vast selection of classic and contemporary songs to belt out, solo or in duets with friends. Enjoy tasty cocktails and delicious nibbles as you take turns entertaining the crowd. With the sparkling city lights as your backdrop, this karaoke night promises a night of non-stop entertainment and unforgettable memories.",
+    "eventCreator": "SingIt"
+  },
+  {
+    "name": "Bayside Cycling Adventure",
+    "date": "2023-09-16T09:00:00.000Z",
+    "location": "St Kilda, Melbourne",
+    "description": "Calling all cycling enthusiasts! Join us for an exhilarating Bayside Cycling Adventure along the scenic routes of St Kilda, Melbourne. This social cycling event caters to riders of all levels, from beginners to experienced cyclists. Feel the breeze on your face as you pedal past beautiful coastal landscapes, iconic landmarks, and charming cafes. ",
+    "eventCreator": "BayCycle"
   }
 ]
