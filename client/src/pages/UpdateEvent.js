@@ -90,7 +90,7 @@ const UpdateEvent = () => {
     <div>
       {eventUpdated ? (
         <>
-          <h3>Event Updated</h3>
+          <h3 className="eventhead">Event Updated </h3>
           <p>The event has been successfully updated.</p>
           <p>
             Go back to{" "}
@@ -104,54 +104,58 @@ const UpdateEvent = () => {
         <>
           {Auth.loggedIn() && userCreatedEvent && (
             <>
-              <h2>Edit Event</h2>
-              <Form onSubmit={handleUpdateEvent}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Event Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    value={eventFormData.name}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Event Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="description"
-                    onChange={handleChange}
-                    value={eventFormData.description}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Event Date</Form.Label>
-                  <Form.Control
-                    type="date"
-                    name="date"
-                    onChange={handleChange}
-                    value={eventFormData.date}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Event Location</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="location"
-                    onChange={handleChange}
-                    value={eventFormData.location}
-                  />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Update Event
-                </Button>
-                {updateError && (
-                  <div className="col-12 my-3 bg-danger text-white p-3">
-                    {updateError.message}
-                  </div>
-                )}
-              </Form>
+              <h2 className="eventhead">Edit Event</h2>
+              <div className="row">
+                <div className="col-lg-6">
+                  <Form onSubmit={handleUpdateEvent} className="event-form">
+                    <Form.Group className="mb-3 form-group">
+                      <Form.Label>Event Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="name"
+                        onChange={handleChange}
+                        value={eventFormData.name}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3 form-group">
+                      <Form.Label>Event Description</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="description"
+                        onChange={handleChange}
+                        value={eventFormData.description}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3 form-group">
+                      <Form.Label>Event Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="date"
+                        onChange={handleChange}
+                        value={eventFormData.date}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3 form-group">
+                      <Form.Label>Event Location</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="location"
+                        onChange={handleChange}
+                        value={eventFormData.location}
+                      />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                      Update Event
+                    </Button>
+                    {updateError && (
+                      <div className="col-12 my-3 bg-danger text-white p-3">
+                        {updateError.message}
+                      </div>
+                    )}
+                  </Form>
+                </div>
+              </div>
             </>
           )}
         </>
