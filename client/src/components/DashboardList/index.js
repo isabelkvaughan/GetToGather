@@ -1,9 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./DashboardList.css";
+import { Button } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { QUERY_EVENTS } from "../../utils/queries";
+import { REMOVE_EVENT } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const DashboardList = ({ events, title, showTitle = true }) => {
   console.log(events);
+
+  // Remove Event Mutation
+
+  const [removeEvent, { error: removeError }] = useMutation(REMOVE_EVENT, {
+    update(cache, { data: { removeEvent } }) {
+      try {
+        const { events } = cache.readQuery({ query: QUERY_EVENTS }) || {};
+        const filteredEvents = events.filter(
+          (event) => event._id !== removeEvent._id
+        );
+        cache.writeQuery({
+          query: QUERY_EVENTS,
+          data: { events: filteredEvents },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
+  const [eventRemoved, setEventRemoved] = useState(false);
+
+  const handleRemoveEvent = async (eventId) => {
+    try {
+      await removeEvent({
+        variables: { eventId },
+      });
+      setEventRemoved(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    if (eventRemoved) {
+      // Redirect to the profile page after removing the event
+      window.location.assign(`/profile/${Auth.getProfile().data.username}`);
+    }
+  }, [eventRemoved]);
   if (!events.length) {
     return <h4 className="no-events">No events yet</h4>;
   }
@@ -18,7 +62,9 @@ const DashboardList = ({ events, title, showTitle = true }) => {
               <h4 className="event-name">{event.name}</h4>
               <p>{event.description}</p>
               <div className="event-details">
-                <p>{event.date}   |   {event.location}</p>
+                <p>
+                  {event.date} | {event.location}
+                </p>
               </div>
             </div>
             <div className="button-container">
@@ -30,16 +76,16 @@ const DashboardList = ({ events, title, showTitle = true }) => {
               </Link>
               <Link
                 className="dash-btn dash-btn-update"
-                to={`/events/${event._id}`}
+                to={`/update/${event._id}`}
               >
                 Update
               </Link>
-              <Link
+              <Button
                 className="dash-btn dash-btn-delete"
-                to={`/events/${event._id}`}
+                onClick={() => handleRemoveEvent(event._id)}
               >
                 Delete
-              </Link>
+              </Button>
             </div>
           </div>
         ))}
