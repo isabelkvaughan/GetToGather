@@ -236,3 +236,9 @@ form .form-group {
   margin-bottom: 20px;
   text-align: center;
 }
+
+.no-events {
+  color: var(--light);
+  text-align: center;
+  margin-top: 25px;
+}

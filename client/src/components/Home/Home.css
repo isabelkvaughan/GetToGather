@@ -14,20 +14,6 @@ section {
   width: 100%;
 }
 
-/* Media Query for Desktop */
-/* @media only screen and (min-width: 768px) {
-  section {
-    width: 60%;
-    margin: 0 auto;
-  }
-} */
-
-/* Home Event Styles */
-.home-event {
-  background-color: var(--quatrinary);
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: var(--quatrinary);
-  color: var(--dark);
-  text-align: center;
+.home-heading {
+  margin: 20px 0;
 }

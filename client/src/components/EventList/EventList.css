@@ -7,12 +7,76 @@
   --dark: #0d4a6a;
 }
 
-/* Home Event Styles */
+/* Event List Styles */
 .home-event {
   background-color: var(--quatrinary);
   padding: 15px;
   margin: 10px 0;
-  border-radius: var(--quatrinary);
+  border-radius: 25px;
+  color: var(--dark);
+  text-align: center;
+}
+
+.card {
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background-color: var(--quatrinary);
+  color: var(--dark);
+  text-align: center;
+  padding: 10px;
+}
+
+.no-events {
   color: var(--light);
   text-align: center;
+  margin-top: 25px;
+}
+
+.event-name {
+  font-weight: bold;
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-details p {
+  margin: 0;
+}
+
+.event-link {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.event-link:hover {
+  filter: brightness(1.2);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.2);
+  color: var(--light);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-squared {
+  border-radius: 25px;
 }

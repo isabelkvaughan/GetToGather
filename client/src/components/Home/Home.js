@@ -12,12 +12,12 @@ const Home = () => {
   return (
     <section>
       <div className="flex-row justify-center">
-        <h2>Discover Events This Week</h2>
+        <h2 className="home-heading">Discover Events This Week</h2>
         <div className="col-12 col-md-8 mb-3">
           {events.length ? (
             <EventList events={events} title="Upcoming Events" />
           ) : (
-            <h3>No events Yet</h3>
+            <h3 className="no-events">No events Yet</h3>
           )}
         </div>
       </div>
