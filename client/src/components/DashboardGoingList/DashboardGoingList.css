@@ -1,0 +1,73 @@
+:root {
+  --primary: #00caca;
+  --secondary: #fe8e17;
+  --tertiary: #f6c0ca;
+  --quatrinary: #8ea5b7;
+  --light: #fff;
+  --dark: #0d4a6a;
+}
+
+.card {
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background-color: var(--quatrinary);
+  color: var(--dark);
+  text-align: center;
+  padding: 10px;
+}
+
+.no-events {
+  color: var(--light);
+  text-align: center;
+  margin-top: 25px;
+}
+
+.event-name {
+  font-weight: bold;
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-details p {
+  margin: 0;
+}
+
+.dash-btn {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  width: 120px;
+  background-color: var(--primary);
+  color: var(--light);
+  text-decoration: none;
+  transition: filter 0.3s ease;
+}
+
+.dash-btn:hover {
+  filter: brightness(1.2);
+  color: var(--light);
+}
+
+.dash-btn-primary {
+  background-color: var(--secondary);
+}
+
+.dash-btn-update {
+  background-color: var(--primary);
+}
+
+.dash-btn-delete {
+  background-color: #ed514c;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
