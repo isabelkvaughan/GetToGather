@@ -81,7 +81,8 @@ const EventForm = () => {
       {Auth.loggedIn() ? (
         <div className="row">
           <div className="col-lg-6">
-            <form className="event-form" onSubmit={handleFormSubmit}>
+            <form className="event-form">
+             
               {/* Rest of the form content */}
              
               <Form.Group className="form-group mb-3">
@@ -118,16 +119,8 @@ const EventForm = () => {
                   value={eventFormData.location}
                 />
               </Form.Group>
-
-              <Button variant="primary" type="submit" className="hidden-below-991">
-                Add Event
-              </Button>
-              {error && (
-                <div className=" form-group col-12 my-3 bg-danger text-white p-3 hidden-below-991">
-                  {error.message}
-                </div>
-              )}
-          
+            
+           
             </form>
           </div>
           <div className="col-lg-6">
@@ -144,20 +137,24 @@ const EventForm = () => {
                   value={eventFormData.description}
                 />
               </Form.Group>
-   
-          <Button variant="primary" type="submit" className="hidden-above-991">
+
+            </div>
+            
+
+          </div>
+                   <div className="buttoncontainer" >
+              <Button variant="primary" type="submit"  onClick={handleFormSubmit} >
                 Add Event
               </Button>
               {error && (
-                <div className="hidden-above-991 form-group col-12 my-3 bg-danger text-white p-3">
+                <div className=" form-group col-12 my-3 bg-danger text-white p-3">
                   {error.message}
                 </div>
-              )}
-
+              )} 
+          
             </div>
-
-            
-          </div>
+          
+          
         </div>
       ) : (
         <p>
