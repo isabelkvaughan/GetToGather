@@ -13,6 +13,14 @@ export const QUERY_USER = gql`
         description
         location
       }
+      rsvpGoing {
+        _id
+        name
+        date
+        description
+        location
+        eventCreator
+      }
     }
   }
 `;
