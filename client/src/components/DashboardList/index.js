@@ -81,7 +81,7 @@ const DashboardList = ({ events, title, showTitle = true }) => {
                 Update
               </Link>
               <Button
-                className="dash-btn dash-btn-delete"
+                id="dash-btn-delete"
                 onClick={() => handleRemoveEvent(event._id)}
               >
                 Delete
