@@ -95,7 +95,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 form .form-group {
@@ -110,7 +109,7 @@ form .form-group {
   font-weight: bold;
   color: var(--light);
   margin-bottom: 5px;
-  width: 150px;
+  /* width: 150px; */
   margin-right: 10px;
 }
 
@@ -121,7 +120,7 @@ form .form-group {
   border: none;
   border-radius: 15px;
   flex: 1;
-  color: var(--light);
+  color: var(--dark);
 }
 
 /* .event-form label {
@@ -147,7 +146,7 @@ form .form-group {
 }
 */
 .event-desc-container {
-  display: flex;
+  /* display: flex; */
   justify-content: flex-end; /* Align form groups to the right */
 }
 
@@ -156,13 +155,13 @@ form .form-group {
 }
 
 .btn.btn-primary {
+  margin-top: 10px;
   background-color: var(--secondary);
   color: var(--light);
   padding: 10px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 15px;
   width: 150px;
   font-weight: bold;
 }
@@ -181,7 +180,7 @@ form .form-group {
 .event-form p {
   text-align: center;
   margin-top: 20px;
-  color: var(--light);
+  color: var(--dark);
 }
 
 .event-form a {
@@ -193,29 +192,33 @@ form .form-group {
 }
 
 .eventdesc {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
-  height: 500px;
-  width: 500px; /* Adjust the width as needed */
+  /* height: 500px; */
+  width: 500px;
   z-index: 2;
+  /* padding-left: 15px; */
+  padding-right: 15px;
 }
 
 .eventdesc label {
-  color: white;
+  margin-top: 10px;
+  color: var(--light);
   font-weight: bold;
+  padding: 0.5rem;
+  font-size: 1.2rem;
 }
 
-.event-form .eventdesc textarea {
+.eventdesc textarea {
   width: 520px;
-  height: 351px;
+  height: 262px;
   resize: none;
   background-color: var(--quatrinary);
   border: none;
   border-radius: 15px;
   padding: 20px;
-  color: var(--light);
-  position: absolute;
+  color: var(--dark);
   left: 0;
   top: 0;
 }
@@ -236,4 +239,14 @@ form .form-group {
   margin-top: 25px;
 }
 
-/****Update Form CSS*****/
+@media (max-width: 991px) {
+  .hidden-below-991 {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .hidden-above-991 {
+    display: none;
+  }
+}
