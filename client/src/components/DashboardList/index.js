@@ -8,7 +8,7 @@ import { REMOVE_EVENT } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const DashboardList = ({ events, title, showTitle = true }) => {
-  console.log(events);
+  console.log("hosted events", events);
 
   // Remove Event Mutation
 

@@ -15,7 +15,7 @@ Key Features:
 - User Profile and Event Dashboard: Users can view their upcoming events and events they have organized, fostering a sense of community involvement.
 - Responsive Design: Enjoy a seamless user experience on any device, from desktop to mobile, ensuring convenience and accessibility.
 
-GetToGather aims to bring people together through shared experiences and interests. With its scalable, user-focused approach, the application provides a clean and polished UI that showcases upcoming events and empowers users to connect with their communities. Whether you're a seasoned event planner or a casual attendee, GetToGather is your go-to platform for creating, discovering, and celebrating memorable events.- 
+GetToGather aims to bring people together through shared experiences and interests. With its scalable, user-focused approach, the application provides a clean and polished UI that showcases upcoming events and empowers users to connect with their communities. Whether you're a seasoned event planner or a casual attendee, GetToGather is your go-to platform for creating, discovering, and celebrating memorable events.-
 
 ## Technologies Used
 
@@ -33,7 +33,7 @@ GetToGather aims to bring people together through shared experiences and interes
 1. Clone the repository.
 2. Install server and client dependencies using `npm install` and `cd client && npm install`.
 3. Seed the database by running `npm run seed`.
-5. Start the application using `npm run develop`.
+4. Start the application using `npm run develop`.
 
 - [Link to the GitHub repository](https://github.com/isabelkvaughan/GetToGather)
 - [Link to the deployed application](https://github.com/isabelkvaughan/GetToGather)

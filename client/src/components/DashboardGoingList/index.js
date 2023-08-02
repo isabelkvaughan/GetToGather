@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./DashboardGoingList.css";
 
 const DashboardGoingList = ({ events, title, showTitle = true }) => {
-  console.log(events);
+  console.log("events", events);
   if (!events.length) {
     return <h4 className="no-events">No events yet</h4>;
   }
@@ -18,7 +18,9 @@ const DashboardGoingList = ({ events, title, showTitle = true }) => {
               <h4 className="event-name">{event.name}</h4>
               <p>{event.description}</p>
               <div className="event-details">
-                <p>{event.date}   |   {event.location}</p>
+                <p>
+                  {event.date} | {event.location}
+                </p>
               </div>
             </div>
             <div className="button-container">

@@ -24,18 +24,29 @@ const SingleEvent = () => {
   );
 
   // Adding and Removing RSVP
-  const [addRsvpGoing] = useMutation(RSVP_GOING);
-  const [removeRsvp] = useMutation(REMOVE_RSVP);
+  const [addRsvpGoing] = useMutation(RSVP_GOING, {
+    onError: (error) => {
+      console.error("Error handling RSVP:", error);
+    },
+  });
+
+  const [removeRsvp] = useMutation(REMOVE_RSVP, {
+    onError: (error) => {
+      console.error("Error handling RSVP:", error);
+    },
+  });
 
   const [isGoing, setIsGoing] = useState(hasUserRSVPd);
 
   const handleRsvp = async (going) => {
     try {
+      console.log("handleRsvp called with:", going);
       if (going) {
         // Add RSVP
-        await addRsvpGoing({
+        const { data } = await addRsvpGoing({
           variables: { userId: userData?.me?._id, eventId: event._id },
         });
+        console.log(data);
       } else {
         // Remove RSVP
         await removeRsvp({
@@ -48,7 +59,7 @@ const SingleEvent = () => {
       console.error("Error handling RSVP:", error);
     }
   };
-
+  console.log("hasUserRSVPd:", hasUserRSVPd);
   if (loading || userLoading) {
     return <div>Loading...</div>;
   }
@@ -58,9 +69,10 @@ const SingleEvent = () => {
       <>
         <h3 className="event-title">{event.name}</h3>
         <div className="event-detail">
-        
-          <div className="loc-n-date">{event.date}, {event.location} </div>
-          
+          <div className="loc-n-date">
+            {event.date}, {event.location}{" "}
+          </div>
+
           <div className="event-desc-se">{event.description}</div>
         </div>
         <div>

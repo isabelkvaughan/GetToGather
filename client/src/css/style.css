@@ -242,11 +242,10 @@ form .form-group {
   margin-top: 25px;
 }
 
-
 /* Single Event Page */
 .singleeventcontainer {
-margin: auto;
-text-align: center;
+  margin: auto;
+  text-align: center;
 }
 .event-title {
   margin-top: 40px;
@@ -278,7 +277,6 @@ text-align: center;
     display: none;
   }
 }
-
 @media (min-width: 992px) {
   .hidden-above-991 {
     display: none;
@@ -286,33 +284,32 @@ text-align: center;
 }
  */
 
- /* single event btn css */
+/* single event btn css */
 
- .btn.dark-btn {
+.btn.dark-btn {
   background-color: var(--secondary);
   color: var(--light);
-padding: 10px;
-width: 150px;
-font-weight: bold;
-transition: background-color 0.2s ease;
-border: none;
- }
- .btn.dark-btn:active {
+  padding: 10px;
+  width: 150px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+.btn.dark-btn:active {
   background-color: #cc7314;
- }
+}
 
- .btn.light-btn {
+.btn.light-btn {
   background-color: var(--quatrinary);
   font-weight: lighter;
   border: none;
   transition: background-color 0.2s ease;
- }
+}
 
- .btn.light-btn:hover {
+.btn.light-btn:hover {
   cursor: pointer;
-  background-color:#738492
-  
- }
- .btn.light-btn:active {
+  background-color: #738492;
+}
+.btn.light-btn:active {
   background-color: gray;
- }
+}

@@ -82,9 +82,8 @@ const EventForm = () => {
         <div className="row">
           <div className="col-lg-6">
             <form className="event-form">
-             
               {/* Rest of the form content */}
-             
+
               <Form.Group className="form-group mb-3">
                 <Form.Label>Event Name</Form.Label>
                 <Form.Control
@@ -100,27 +99,23 @@ const EventForm = () => {
                 <Form.Label>Event Date</Form.Label>
                 <Form.Control
                   type="date"
-               /*   placeholder="Enter Event Date" */
+                  /*   placeholder="Enter Event Date" */
                   name="date"
                   onChange={handleChange}
                   value={eventFormData.date}
                 />
               </Form.Group>
 
-
-            
               <Form.Group className="form-group mb-3">
                 <Form.Label>Event Location</Form.Label>
                 <Form.Control
                   type="text"
-                 /* placeholder="Enter Event Location" */
+                  /* placeholder="Enter Event Location" */
                   name="location"
                   onChange={handleChange}
                   value={eventFormData.location}
                 />
               </Form.Group>
-            
-           
             </form>
           </div>
           <div className="col-lg-6">
@@ -131,30 +126,24 @@ const EventForm = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
-                 /* placeholder="Enter Event Description" */
+                  /* placeholder="Enter Event Description" */
                   name="description"
                   onChange={handleChange}
                   value={eventFormData.description}
                 />
               </Form.Group>
-
             </div>
-            
-
           </div>
-                   <div className="buttoncontainer" >
-              <Button variant="primary" type="submit"  onClick={handleFormSubmit} >
-                Add Event
-              </Button>
-              {error && (
-                <div className=" form-group col-12 my-3 bg-danger text-white p-3">
-                  {error.message}
-                </div>
-              )} 
-          
-            </div>
-          
-          
+          <div className="buttoncontainer">
+            <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+              Add Event
+            </Button>
+            {error && (
+              <div className=" form-group col-12 my-3 bg-danger text-white p-3">
+                {error.message}
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <p>

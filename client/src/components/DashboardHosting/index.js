@@ -1,14 +1,11 @@
 import React from "react";
-import EventForm from "../EventForm";
 import DashboardList from "../DashboardList";
 
 const DashboardHosting = ({ user }) => {
   return (
     <div>
       <div>
-        <h3 className="dashboard-heading">
-          Hosted by you
-        </h3>
+        <h3 className="dashboard-heading">Hosted by you</h3>
 
         <div>
           <DashboardList
@@ -18,9 +15,6 @@ const DashboardHosting = ({ user }) => {
             showUsername={false}
           />
         </div>
-        {/* <div className="col-12 col-md-10 mb-3 p-3" style={{ border: "1px dotted #1a1a1a" }}>
-          <EventForm />
-        </div> */}
       </div>
     </div>
   );

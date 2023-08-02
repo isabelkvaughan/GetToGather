@@ -13,7 +13,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-
+  console.log("user", user);
   if (loading) {
     return <div>Loading...</div>;
   }
