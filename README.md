@@ -36,7 +36,7 @@ GetToGather aims to bring people together through shared experiences and interes
 4. Start the application using `npm run develop`.
 
 - [Link to the GitHub repository](https://github.com/isabelkvaughan/GetToGather)
-- [Link to the deployed application](https://github.com/isabelkvaughan/GetToGather)
+- [Link to the deployed application](https://blooming-brook-79575-68bc8b313ace.herokuapp.com/)
 
 ## Mock Up
 
