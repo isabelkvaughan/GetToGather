@@ -24,16 +24,27 @@ const SingleEvent = () => {
   );
 
   // Adding and Removing RSVP
-  const [addRsvpGoing] = useMutation(RSVP_GOING);
-  const [removeRsvp] = useMutation(REMOVE_RSVP);
+  const [addRsvpGoing] = useMutation(RSVP_GOING, {
+    onError: (error) => {
+      console.error("Error handling RSVP:", error);
+    },
+  });
+
+  const [removeRsvp] = useMutation(REMOVE_RSVP, {
+    onError: (error) => {
+      console.error("Error handling RSVP:", error);
+    },
+  });
 
   const handleRsvp = async (going) => {
     try {
+      console.log("handleRsvp called with:", going);
       if (going) {
         // Add RSVP
-        await addRsvpGoing({
+        const { data } = await addRsvpGoing({
           variables: { userId: userData?.me?._id, eventId: event._id },
         });
+        console.log(data);
       } else {
         // Remove RSVP
         await removeRsvp({
@@ -44,7 +55,7 @@ const SingleEvent = () => {
       console.error("Error handling RSVP:", error);
     }
   };
-
+  console.log("hasUserRSVPd:", hasUserRSVPd);
   if (loading || userLoading) {
     return <div>Loading...</div>;
   }
