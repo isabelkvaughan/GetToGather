@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_SINGLE_EVENT, QUERY_ME } from "../utils/queries";
+import { QUERY_SINGLE_EVENT, QUERY_USER } from "../utils/queries";
 import { RSVP_GOING, REMOVE_RSVP } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -16,41 +16,47 @@ const SingleEvent = () => {
   // Get the event data from the query result
   const event = data?.event || {};
 
-  const { loading: userLoading, data: userData } = useQuery(QUERY_ME);
+  // Get the current user from AuthService
+  const currentUser = Auth.getProfile();
+  const currentUserUsername = currentUser?.data.username;
 
+  // Use QUERY_USER with currentUser.username as the username variable
+  const { loading: userLoading, data: userData } = useQuery(QUERY_USER, {
+    variables: { username: currentUserUsername },
+  });
+
+  console.log('userData', userData)
+
+  // Get the user data from the query result
+  const userMe = userData?.user || {};
   // Check if user has already RSVP'd
-  const hasUserRSVPd = userData?.me?.rsvpGoing?.some(
+  const hasUserRSVPd = userMe?.rsvpGoing?.some(
     (rsvpGoing) => rsvpGoing._id === event._id
   );
 
-  // Adding and Removing RSVP
-  const [addRsvpGoing] = useMutation(RSVP_GOING, {
-    onError: (error) => {
-      console.error("Error handling RSVP:", error);
-    },
-  });
+  console.log('userMe', userMe)
+  console.log('hasUserRSVPd', hasUserRSVPd)
 
-  const [removeRsvp] = useMutation(REMOVE_RSVP, {
-    onError: (error) => {
-      console.error("Error handling RSVP:", error);
-    },
-  });
+  // Adding and Removing RSVP
+  const [addRsvpGoing] = useMutation(RSVP_GOING);
+  const [removeRsvp] = useMutation(REMOVE_RSVP);
+
+  console.log('userId', userMe._id)
+  console.log('eventId', event._id)
 
   const [isGoing, setIsGoing] = useState(hasUserRSVPd);
 
   const handleRsvp = async (going) => {
     try {
-      console.log("handleRsvp called with:", going);
       if (going) {
         // Add RSVP
-        const { data } = await addRsvpGoing({
-          variables: { userId: userData?.me?._id, eventId: event._id },
+        await addRsvpGoing({
+          variables: { userId: userMe._id, eventId: event._id },
         });
-        console.log(data);
       } else {
         // Remove RSVP
         await removeRsvp({
-          variables: { userId: userData?.me?._id, eventId: event._id },
+          variables: { userId: userMe._id, eventId: event._id },
         });
       }
 
@@ -59,7 +65,7 @@ const SingleEvent = () => {
       console.error("Error handling RSVP:", error);
     }
   };
-  console.log("hasUserRSVPd:", hasUserRSVPd);
+
   if (loading || userLoading) {
     return <div>Loading...</div>;
   }
