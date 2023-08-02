@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
@@ -36,6 +36,8 @@ const SingleEvent = () => {
     },
   });
 
+  const [isGoing, setIsGoing] = useState(hasUserRSVPd);
+
   const handleRsvp = async (going) => {
     try {
       console.log("handleRsvp called with:", going);
@@ -51,6 +53,8 @@ const SingleEvent = () => {
           variables: { userId: userData?.me?._id, eventId: event._id },
         });
       }
+
+      setIsGoing(going);
     } catch (error) {
       console.error("Error handling RSVP:", error);
     }
@@ -61,27 +65,29 @@ const SingleEvent = () => {
   }
 
   return (
-    <div>
+    <div className="col-lg-6 singleeventcontainer">
       <>
         <h3 className="event-title">{event.name}</h3>
         <div className="event-detail">
-          <div>{event.description}</div>
-          <div>{event.date}</div>
-          <div>{event.location}</div>
+          <div className="loc-n-date">
+            {event.date}, {event.location}{" "}
+          </div>
+
+          <div className="event-desc-se">{event.description}</div>
         </div>
         <div>
           {Auth.loggedIn() && (
-            <div>
+            <div className="rsvpbuttonscontainer">
               <Button
-                variant={hasUserRSVPd ? "secondary" : "primary"}
-                className={hasUserRSVPd ? "dark-btn" : "light-btn"}
+                variant={isGoing ? "secondary" : "primary"}
+                className={isGoing ? "dark-btn" : "light-btn"}
                 onClick={() => handleRsvp(true)}
               >
                 I'm Going
               </Button>
               <Button
-                variant={hasUserRSVPd ? "primary" : "secondary"}
-                className={hasUserRSVPd ? "light-btn" : "dark-btn"}
+                variant={isGoing ? "primary" : "secondary"}
+                className={isGoing ? "light-btn" : "dark-btn"}
                 onClick={() => handleRsvp(false)}
                 style={{ marginLeft: "10px" }}
               >
