@@ -88,7 +88,6 @@ const EventForm = () => {
                 <Form.Label>Event Name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Event Name"
                   name="name"
                   onChange={handleChange}
                   value={eventFormData.name}
@@ -99,7 +98,6 @@ const EventForm = () => {
                 <Form.Label>Event Date</Form.Label>
                 <Form.Control
                   type="date"
-                  /*   placeholder="Enter Event Date" */
                   name="date"
                   onChange={handleChange}
                   value={eventFormData.date}
@@ -110,7 +108,6 @@ const EventForm = () => {
                 <Form.Label>Event Location</Form.Label>
                 <Form.Control
                   type="text"
-                  /* placeholder="Enter Event Location" */
                   name="location"
                   onChange={handleChange}
                   value={eventFormData.location}
@@ -126,7 +123,6 @@ const EventForm = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  /* placeholder="Enter Event Description" */
                   name="description"
                   onChange={handleChange}
                   value={eventFormData.description}
@@ -134,7 +130,7 @@ const EventForm = () => {
               </Form.Group>
             </div>
           </div>
-          <div className="buttoncontainer">
+          <div className="buttoncontainer pl-3">
             <Button variant="primary" type="submit" onClick={handleFormSubmit}>
               Add Event
             </Button>
