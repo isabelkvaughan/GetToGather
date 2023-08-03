@@ -108,7 +108,7 @@ const UpdateEvent = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <Form onSubmit={handleUpdateEvent} className="event-form">
-                    <Form.Group className="mb-3 form-group">
+                    <Form.Group className="form-group mb-3">
                       <Form.Label>Event Name</Form.Label>
                       <Form.Control
                         type="text"
@@ -117,7 +117,29 @@ const UpdateEvent = () => {
                         value={eventFormData.name}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3 form-group">
+                    <Form.Group className="form-group mb-3">
+                      <Form.Label>Event Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="date"
+                        onChange={handleChange}
+                        value={eventFormData.date}
+                      />
+                    </Form.Group>
+                    <Form.Group className="form-group mb-3">
+                      <Form.Label>Event Location</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="location"
+                        onChange={handleChange}
+                        value={eventFormData.location}
+                      />
+                    </Form.Group>
+                  </Form>
+                </div>
+                <div className="col-lg-6">
+                  <div className="event-desc-container">
+                    <Form.Group className="eventdesc mb-3">
                       <Form.Label>Event Description</Form.Label>
                       <Form.Control
                         as="textarea"
@@ -127,34 +149,18 @@ const UpdateEvent = () => {
                         value={eventFormData.description}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3 form-group">
-                      <Form.Label>Event Date</Form.Label>
-                      <Form.Control
-                        type="date"
-                        name="date"
-                        onChange={handleChange}
-                        value={eventFormData.date}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3 form-group">
-                      <Form.Label>Event Location</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="location"
-                        onChange={handleChange}
-                        value={eventFormData.location}
-                      />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                      Update Event
-                    </Button>
-                    {updateError && (
-                      <div className="col-12 my-3 bg-danger text-white p-3">
-                        {updateError.message}
-                      </div>
-                    )}
-                  </Form>
+                  </div>
                 </div>
+              </div>
+              <div className="buttoncontainer">
+                <Button variant="primary" type="submit" onClick={handleUpdateEvent}>
+                  Update Event
+                </Button>
+                {updateError && (
+                  <div className="form-group col-12 my-3 bg-danger text-white p-3">
+                    {updateError.message}
+                  </div>
+                )}
               </div>
             </>
           )}

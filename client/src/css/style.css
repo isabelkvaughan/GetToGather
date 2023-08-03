@@ -167,7 +167,7 @@ form .form-group {
   margin: auto;
 }
 .buttoncontainer {
-  margin: auto;
+  margin: 0;
 }
 .btn.btn-primary:hover {
   background-color: #ff9e44;
